@@ -10,6 +10,7 @@ on:
     paths:
       - .github/workflows/emulator.yml
       - scripts/emulator-check.sh
+      - scripts/emulator-tour.sh
 
 permissions:
   contents: read
@@ -28,8 +29,8 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Build release APK
-        run: ./gradlew assembleRelease --stacktrace
+      - name: Build release and debug APKs
+        run: ./gradlew assembleRelease assembleDebug --stacktrace
 
       - name: Enable KVM
         run: |
@@ -45,7 +46,9 @@ jobs:
           target: google_apis
           profile: pixel_7
           disable-animations: true
-          script: ./scripts/emulator-check.sh
+          script: |
+            ./scripts/emulator-check.sh
+            ./scripts/emulator-tour.sh
 
       - uses: actions/upload-artifact@v4
         if: always()
