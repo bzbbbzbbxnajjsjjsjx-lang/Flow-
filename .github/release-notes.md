@@ -6,6 +6,9 @@ Sakin, sonlu ve gizliliğe saygılı Material 3 Expressive RSS okuyucusu. İzin 
 
 > **Önemli:** Bu dosya GitHub'da derlenir ve telefonundaki eski Akış'tan farklı bir anahtarla imzalıdır. Eski Akış'ın üzerine kurulamaz. Önce eski uygulamada **Ayarlar → Veri → Yedekle** ile yedek al, eskisini kaldır, bunu kur, sonra **Yedekten geri yükle**.
 
+### Yenilikler (1.18.3)
+- **Dayanıklılık:** Yedekleme, geri yükleme ve OPML işlemleri iptal edilince hatayı yutmaz; tam metin yüklemesi beklenmedik bir hatada takılı kalmaz.
+
 ### Yenilikler (1.18.2)
 - **Arama düzeltmesi:** Arama alanı durum çubuğunun altına girmez; arama açıkken ana ekranın kartları ve karoları arkada görünmez, yalnızca son aramalar ve sonuçlar listelenir.
 

@@ -15,8 +15,8 @@ android {
         applicationId = "com.akis.app"
         minSdk = 26
         targetSdk = 37
-        versionCode = 35
-        versionName = "1.18.2"
+        versionCode = 36
+        versionName = "1.18.3"
     }
 
     buildTypes {

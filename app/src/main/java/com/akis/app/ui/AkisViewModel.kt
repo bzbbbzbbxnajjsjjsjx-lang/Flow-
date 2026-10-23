@@ -22,6 +22,7 @@ import com.akis.app.domain.Limits
 import com.akis.app.domain.OpmlEntry
 import com.akis.app.domain.ReaderRules
 import com.akis.app.domain.Settings
+import java.io.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -153,12 +154,17 @@ class AkisViewModel(app: Application) : AndroidViewModel(app) {
         if (fullTexts.value[articleId] is FullTextState.Loading) return
         fullTexts.update { it + (articleId to FullTextState.Loading) }
         viewModelScope.launch {
-            when (val result = withContext(Dispatchers.IO) { ArticlePage.load(article.link) }) {
-                is PageResult.Text -> {
-                    store.update { FeedRules.setFullText(it, articleId, result.text) }
-                    fullTexts.update { it - articleId }
+            try {
+                when (val result = withContext(Dispatchers.IO) { ArticlePage.load(article.link) }) {
+                    is PageResult.Text -> {
+                        store.update { FeedRules.setFullText(it, articleId, result.text) }
+                        fullTexts.update { it - articleId }
+                    }
+                    is PageResult.Failure -> fullTexts.update { it + (articleId to FullTextState.Failed(result.reason)) }
                 }
-                is PageResult.Failure -> fullTexts.update { it + (articleId to FullTextState.Failed(result.reason)) }
+            } finally {
+                // Cancelled or failed unexpectedly: never leave the spinner behind.
+                fullTexts.update { if (it[articleId] is FullTextState.Loading) it - articleId else it }
             }
         }
     }
@@ -207,10 +213,10 @@ class AkisViewModel(app: Application) : AndroidViewModel(app) {
         val text = store.data.value?.let(Backup::encode)
         viewModelScope.launch {
             val ok = text != null && withContext(Dispatchers.IO) {
-                runCatching {
+                io {
                     getApplication<Application>().contentResolver.openOutputStream(uri, "wt")
                         ?.use { it.write(text.toByteArray()) } ?: error("no stream")
-                }.isSuccess
+                } != null
             }
             onDone(ok)
         }
@@ -220,9 +226,9 @@ class AkisViewModel(app: Application) : AndroidViewModel(app) {
     fun restore(uri: Uri, onDone: (Boolean) -> Unit) {
         viewModelScope.launch {
             val restored = withContext(Dispatchers.IO) {
-                runCatching {
+                io {
                     getApplication<Application>().contentResolver.openInputStream(uri)?.use { it.readUpTo(Limits.MAX_BACKUP_BYTES) }
-                }.getOrNull()?.decodeToString()?.let(Backup::restore)
+                }?.decodeToString()?.let(Backup::restore)
             }
             if (restored != null) store.update { restored }
             onDone(restored != null)
@@ -246,9 +252,9 @@ class AkisViewModel(app: Application) : AndroidViewModel(app) {
     fun importOpml(uri: Uri, onDone: (Int?) -> Unit) {
         viewModelScope.launch {
             val bytes = withContext(Dispatchers.IO) {
-                runCatching {
+                io {
                     getApplication<Application>().contentResolver.openInputStream(uri)?.use { it.readUpTo(Limits.MAX_OPML_BYTES) }
-                }.getOrNull()
+                }
             }
             val entries = bytes?.let { FeedLoader.parser(it) }?.let(FeedRules::parseOpmlEntries).orEmpty()
             if (entries.isEmpty()) {
@@ -266,10 +272,10 @@ class AkisViewModel(app: Application) : AndroidViewModel(app) {
         val text = FeedRules.toOpml(store.data.value?.feeds.orEmpty())
         viewModelScope.launch {
             val ok = withContext(Dispatchers.IO) {
-                runCatching {
+                io {
                     getApplication<Application>().contentResolver.openOutputStream(uri, "wt")
                         ?.use { it.write(text.toByteArray()) } ?: error("no stream")
-                }.isSuccess
+                } != null
             }
             onDone(ok)
         }
@@ -279,4 +285,15 @@ class AkisViewModel(app: Application) : AndroidViewModel(app) {
         const val MAX_PARALLEL = 4
         const val STALE_MS = 15 * 60_000L
     }
+}
+
+/** File and stream work on a picked address: null when it fails, but cancellation still propagates. */
+private inline fun <T> io(block: () -> T): T? = try {
+    block()
+} catch (_: IOException) {
+    null
+} catch (_: SecurityException) {
+    null
+} catch (_: IllegalStateException) {
+    null
 }
