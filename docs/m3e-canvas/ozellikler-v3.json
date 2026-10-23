@@ -1,0 +1,2577 @@
+{
+ "title": "Akış",
+ "brief": "Sade, koyu lacivert RSS okuyucu: v3 özellikleri (kaynak bulma, arama, gruplar, sessiz kelimeler, sesli okuma, haftalık özet, açık tema).",
+ "frame": "phone",
+ "platform": "android",
+ "paletteKey": "blue",
+ "theme": {
+  "dark": true,
+  "bothModes": true,
+  "contrast": "standard",
+  "shape": "rounded",
+  "font": "robotoFlex",
+  "emphasized": true,
+  "motion": "expressive"
+ },
+ "frames": [
+  {
+   "id": "f_ekle",
+   "name": "1. Kaynak ekle: site adresi bulundu",
+   "x": 0,
+   "y": 0,
+   "note": "Alt sayfa: adres yazılınca Akış sayfadaki RSS/Atom bağlantısını arar ve bulunan akışları listeler. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_yok",
+   "name": "2. Kaynak ekle: bulunamadı",
+   "x": 492,
+   "y": 0,
+   "note": "Aynı alt sayfa; sayfada akış yoksa alanın altında satır içi hata görünür. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_ara",
+   "name": "3. Arama",
+   "x": 984,
+   "y": 0,
+   "note": "Ana ekranda üst çubuk arama alanına dönüşür; sonuçlar ana ekranla aynı eşit iki sütunlu karolardır. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_grup",
+   "name": "4. Gruplar: ana ekran",
+   "x": 1476,
+   "y": 0,
+   "note": "Filtre grubunun altında tek seçimli grup çipi sırası; seçilen gruba ait kaynakların yazıları görünür. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_sessiz",
+   "name": "5. Sessiz kelimeler",
+   "x": 1968,
+   "y": 0,
+   "note": "Ayarlar > Filtreler'den açılan ekran: gizlenecek kelimeleri ekle ve kaldır. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_sesli",
+   "name": "6. Sesli okuma",
+   "x": 2460,
+   "y": 0,
+   "note": "Okuyucu; araç çubuğunun üstünde mini oynatıcı kartı. Okuma cihazın metin okuma motoruyla yapılır, ağ gerekmez. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_ayar",
+   "name": "7. Ayarlar v2",
+   "x": 2952,
+   "y": 0,
+   "note": "Ayarlar: mevcut Sakin akış bölümüne Filtreler, Akış, Görünüm ve Okuma özeti eklendi. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_ozet",
+   "name": "8. Okuma özeti (haftalık)",
+   "x": 3444,
+   "y": 0,
+   "note": "Sakin, yalnızca bilgi veren haftalık özet. Seri, rozet ya da hedef yok. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_acik",
+   "name": "9. Açık tema: okuyucu",
+   "x": 3936,
+   "y": 0,
+   "note": "Okuyucunun açık temadaki hâli. Açık palet (canvas uygulayamaz): arka plan #F6F7FF, kartlar #E9ECFA, vurgu konteyneri #C9D2FF, metin #1B1B2F; FAB #EFA4F7 ve tek köşe 16dp, boşluk 8dp değişmez. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_ara0",
+   "name": "3b. Arama: sonuç yok",
+   "x": 4428,
+   "y": 0,
+   "note": "Aranan sözcük hiçbir yazıda geçmiyorsa boş sonuç durumu. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_kayn",
+   "name": "4b. Gruplar: Kaynaklar",
+   "x": 4920,
+   "y": 0,
+   "note": "Her satırda küçük grup etiketi çipi ve 'Grup' eylemi. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_gsec",
+   "name": "4c. Grup seç (alt sayfa)",
+   "x": 5412,
+   "y": 0,
+   "note": "'Grup' eyleminin açtığı alt sayfa: var olan gruptan seç ya da yeni grup oluştur. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp.",
+   "bg": "surface"
+  },
+  {
+   "id": "f_read",
+   "name": "Okuyucu (mevcut)",
+   "x": 5904,
+   "y": 0,
+   "bg": "surface",
+   "note": "Mevcut okuyucu: okuyucu-v2.json'daki ekran. Karolar buraya açılır. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp."
+  }
+ ],
+ "groups": [
+  {
+   "id": "g2",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i1",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "refresh"
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i3",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 892,
+     "fill": "inverseSurface",
+     "note": "Karartma; dokununca alt sayfa kapanır."
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "x": 0,
+   "y": 312,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i5",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 580,
+     "checked": true,
+     "radiusTop": 16,
+     "note": "Alt sayfa, #0E153F, 16dp köşe."
+    }
+   ]
+  },
+  {
+   "id": "g8",
+   "x": 16,
+   "y": 328,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i7",
+     "kind": "text",
+     "label": "Kaynak ekle",
+     "icon": null,
+     "variant": "filled",
+     "size": 22,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "x": 16,
+   "y": 372,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i9",
+     "kind": "textField",
+     "label": "Akış ya da site adresi",
+     "icon": "link",
+     "variant": "outlined",
+     "supporting": "example.com",
+     "note": "Alana example.com yazıldı. Normal bir site adresi girilirse Akış sayfanın RSS/Atom bağlantısını arar; doğrudan akış adresi de kabul edilir. Yalnızca HTTPS."
+    }
+   ]
+  },
+  {
+   "id": "g12",
+   "x": 16,
+   "y": 444,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i11",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 204,
+     "fill": "surfaceContainerHigh",
+     "note": "Sonuç kartı #0E153F, 16dp köşe."
+    }
+   ]
+  },
+  {
+   "id": "g14",
+   "x": 32,
+   "y": 456,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i13",
+     "kind": "text",
+     "label": "2 akış bulundu",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g17",
+   "x": 16,
+   "y": 492,
+   "axis": "y",
+   "items": [
+    {
+     "id": "i15",
+     "kind": "listItem",
+     "label": "Webtekno · Tüm yazılar",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "example.com/feed.xml",
+     "icon2": "radio_button_checked",
+     "note": "Seçili akış."
+    },
+    {
+     "id": "i16",
+     "kind": "listItem",
+     "label": "Webtekno · Teknoloji",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "example.com/teknoloji.rss",
+     "icon2": "radio_button_unchecked",
+     "note": "Tek seçim: radyo düğmesi. Satırlar eşit yükseklikte."
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "x": 16,
+   "y": 664,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i18",
+     "kind": "button",
+     "label": "Ekle",
+     "icon": "add",
+     "variant": "filled",
+     "size": 380,
+     "note": "Seçili akışı kaynaklara ekler ve sayfayı kapatır. Hiçbir şey seçili değilse pasif."
+    }
+   ]
+  },
+  {
+   "id": "g21",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i20",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "refresh"
+    }
+   ]
+  },
+  {
+   "id": "g23",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i22",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 892,
+     "fill": "inverseSurface",
+     "note": "Karartma; dokununca alt sayfa kapanır."
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "x": 492,
+   "y": 312,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i24",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 580,
+     "checked": true,
+     "radiusTop": 16,
+     "note": "Alt sayfa, #0E153F, 16dp köşe."
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "x": 508,
+   "y": 328,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i26",
+     "kind": "text",
+     "label": "Kaynak ekle",
+     "icon": null,
+     "variant": "filled",
+     "size": 22,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g29",
+   "x": 508,
+   "y": 372,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i28",
+     "kind": "textField",
+     "label": "Akış ya da site adresi",
+     "icon": "link",
+     "variant": "outlined",
+     "supporting": "Bu sayfada RSS akışı bulunamadı",
+     "note": "Satır içi hata: alan hata renginde, yardımcı metin 'Bu sayfada RSS akışı bulunamadı'. Alan değeri example.com/blog."
+    }
+   ]
+  },
+  {
+   "id": "g31",
+   "x": 508,
+   "y": 452,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i30",
+     "kind": "text",
+     "label": "Adresi kontrol et ya da doğrudan akış adresini yaz.",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g33",
+   "x": 508,
+   "y": 664,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i32",
+     "kind": "button",
+     "label": "Ekle",
+     "icon": "add",
+     "variant": "outlined",
+     "size": 380,
+     "note": "Akış bulunana kadar pasif."
+    }
+   ]
+  },
+  {
+   "id": "g35",
+   "x": 1000,
+   "y": 16,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i34",
+     "kind": "searchBar",
+     "label": "Yazılarda ara",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "close",
+     "note": "Üst çubuk yerine arama alanı. Sol ok aramayı kapatıp ana ekrana döner; sağdaki X ('Temizle', contentDescription) yazıyı siler. Alana 'yapay' yazıldı. Başlık ve metinde arar, tr-TR."
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "x": 1000,
+   "y": 88,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i36",
+     "kind": "text",
+     "label": "4 yazı bulundu",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g39",
+   "x": 1000,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i38",
+     "kind": "card",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g41",
+   "x": 1194,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i40",
+     "kind": "card",
+     "label": "Yapay zeka destekli çeviri uygulamaları karşılaştırıldı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 6 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g43",
+   "x": 1000,
+   "y": 248,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i42",
+     "kind": "card",
+     "label": "Yapay zeka düzenlemesinde yeni adım",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "BBC Türkçe · dün",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g45",
+   "x": 1194,
+   "y": 248,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i44",
+     "kind": "card",
+     "label": "Yapay zeka çiplerinde arz sıkıntısı sürüyor",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Donanım Haber · dün",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g47",
+   "x": 1476,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i46",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "search",
+     "actions": {
+      "icon2": {
+       "to": "f_ara",
+       "transition": "fade"
+      }
+     },
+     "note": "Sağdaki arama simgesi arama ekranını açar (yenile eylemi FAB menüsüne ya da çekip yenilemeye taşınabilir: açık soru)."
+    }
+   ]
+  },
+  {
+   "id": "g49",
+   "x": 1492,
+   "y": 88,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i48",
+     "kind": "linearProgress",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "wavy": true
+    }
+   ]
+  },
+  {
+   "id": "g53",
+   "x": 1492,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i50",
+     "kind": "button",
+     "label": "Tümü",
+     "icon": null,
+     "variant": "tonal",
+     "size": 124,
+     "note": "Seçili filtre; #2F3B9F."
+    },
+    {
+     "id": "i51",
+     "kind": "button",
+     "label": "Okunmamış",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    },
+    {
+     "id": "i52",
+     "kind": "button",
+     "label": "Yıldızlı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g58",
+   "x": 1492,
+   "y": 184,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i54",
+     "kind": "chip",
+     "label": "Tümü",
+     "icon": null,
+     "variant": "filled",
+     "checked": true,
+     "note": "Tek seçim: bir anda yalnızca bir grup seçili. Grup yoksa satır hiç görünmez."
+    },
+    {
+     "id": "i55",
+     "kind": "chip",
+     "label": "Haber",
+     "icon": null,
+     "variant": "filled"
+    },
+    {
+     "id": "i56",
+     "kind": "chip",
+     "label": "Teknoloji",
+     "icon": null,
+     "variant": "filled"
+    },
+    {
+     "id": "i57",
+     "kind": "chip",
+     "label": "Spor",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g60",
+   "x": 1492,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i59",
+     "kind": "card",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g62",
+   "x": 1686,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i61",
+     "kind": "card",
+     "label": "Android 17 beta sürümü yayınlandı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 4 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g64",
+   "x": 1492,
+   "y": 360,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i63",
+     "kind": "card",
+     "label": "Elektrikli araç satışları üçüncü çeyrekte arttı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Donanım Haber · 5 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g66",
+   "x": 1686,
+   "y": 360,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i65",
+     "kind": "card",
+     "label": "Uzay teleskobu uzak bir galaksiyi görüntüledi",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "BBC Türkçe · 5 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g68",
+   "x": 1492,
+   "y": 488,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i67",
+     "kind": "card",
+     "label": "Derbi öncesi son durum",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Fanatik · 6 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g70",
+   "x": 1686,
+   "y": 488,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i69",
+     "kind": "card",
+     "label": "Açık kaynak projeler için yeni destek programı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Chip Online · 4 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f_read",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g72",
+   "x": 1816,
+   "y": 812,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i71",
+     "kind": "fab",
+     "label": "add",
+     "icon": null,
+     "variant": "filled",
+     "size": 56,
+     "note": "FAB #EFA4F7; menüyü açar."
+    }
+   ]
+  },
+  {
+   "id": "g74",
+   "x": 1968,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i73",
+     "kind": "topAppBar",
+     "label": "Sessiz kelimeler",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "actions": {
+      "icon": {
+       "to": "f_ayar",
+       "transition": "slide"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "g76",
+   "x": 1984,
+   "y": 104,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i75",
+     "kind": "text",
+     "label": "Başlığında ya da metninde bu kelimeler",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g78",
+   "x": 1984,
+   "y": 128,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i77",
+     "kind": "text",
+     "label": "geçen yazılar akışta gösterilmez",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g80",
+   "x": 1984,
+   "y": 168,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i79",
+     "kind": "textField",
+     "label": "Gizlenecek kelime",
+     "icon": "block",
+     "variant": "outlined",
+     "note": "Tek kelime ya da kısa ifade; büyük/küçük harf ve Türkçe karakter ayrımı yapılmaz (tr-TR). Boş ya da var olan kelime eklenmez."
+    }
+   ]
+  },
+  {
+   "id": "g82",
+   "x": 1984,
+   "y": 240,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i81",
+     "kind": "button",
+     "label": "Ekle",
+     "icon": "add",
+     "variant": "filled",
+     "size": 380,
+     "note": "Kelimeyi listeye ekler, alanı temizler ve akışı hemen süzer."
+    }
+   ]
+  },
+  {
+   "id": "g84",
+   "x": 1984,
+   "y": 320,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i83",
+     "kind": "text",
+     "label": "Gizlenen kelimeler (2)",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g86",
+   "x": 1984,
+   "y": 364,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i85",
+     "kind": "chip",
+     "label": "burç",
+     "icon": "close",
+     "variant": "filled",
+     "note": "Kaldırılabilir çip; X'e dokununca kelime silinir ('burç kelimesini kaldır')."
+    }
+   ]
+  },
+  {
+   "id": "g88",
+   "x": 2064,
+   "y": 364,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i87",
+     "kind": "chip",
+     "label": "magazin",
+     "icon": "close",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g90",
+   "x": 2460,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i89",
+     "kind": "topAppBar",
+     "label": "Webtekno",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "text_fields"
+    }
+   ]
+  },
+  {
+   "id": "g92",
+   "x": 2476,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i91",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g94",
+   "x": 2476,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i93",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g96",
+   "x": 2476,
+   "y": 240,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i95",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g98",
+   "x": 2476,
+   "y": 274,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i97",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g100",
+   "x": 2476,
+   "y": 308,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i99",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g102",
+   "x": 2476,
+   "y": 342,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i101",
+     "kind": "text",
+     "label": "günlük kullanımda da fark edileceğini söylüyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g104",
+   "x": 2476,
+   "y": 376,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i103",
+     "kind": "text",
+     "label": "Raporun ikinci bölümü enerji tüketimine ayrıldı.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g106",
+   "x": 2476,
+   "y": 556,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i105",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 224,
+     "fill": "surfaceContainerHigh",
+     "note": "Mini oynatıcı kartı #0E153F, 16dp köşe; araç çubuğunun 16dp üstünde. Sesli okuma başlayınca görünür, Durdur ile kapanır."
+    }
+   ]
+  },
+  {
+   "id": "g108",
+   "x": 2492,
+   "y": 568,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i107",
+     "kind": "text",
+     "label": "Sesli okuma · paragraf 3 / 12",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g111",
+   "x": 2492,
+   "y": 592,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i109",
+     "kind": "button",
+     "label": "Duraklat",
+     "icon": "pause",
+     "variant": "tonal",
+     "size": 170,
+     "toggle": {
+      "icon": "play_arrow",
+      "variant": "tonal",
+      "label": "Devam"
+     },
+     "note": "Duraklat/Devam: okumayı sürdürür ya da bekletir; etiket duruma göre değişir."
+    },
+    {
+     "id": "i110",
+     "kind": "button",
+     "label": "Durdur",
+     "icon": "stop",
+     "variant": "outlined",
+     "size": 170,
+     "note": "Okumayı bitirir ve kartı kapatır."
+    }
+   ]
+  },
+  {
+   "id": "g115",
+   "x": 2492,
+   "y": 656,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i112",
+     "kind": "button",
+     "label": "0.8x",
+     "icon": null,
+     "variant": "outlined",
+     "size": 116
+    },
+    {
+     "id": "i113",
+     "kind": "button",
+     "label": "1x",
+     "icon": null,
+     "variant": "tonal",
+     "size": 116,
+     "note": "Seçili hız."
+    },
+    {
+     "id": "i114",
+     "kind": "button",
+     "label": "1.25x",
+     "icon": null,
+     "variant": "outlined",
+     "size": 116,
+     "note": "Hız bağlı düğme grubu: tek seçim; okuma sırasında anında uygulanır."
+    }
+   ]
+  },
+  {
+   "id": "g117",
+   "x": 2492,
+   "y": 728,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i116",
+     "kind": "linearProgress",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "wavy": true,
+     "value": 25,
+     "size": 348,
+     "note": "Paragraf ilerlemesi, dalgalı doğrusal gösterge (3/12 paragraf)."
+    }
+   ]
+  },
+  {
+   "id": "g119",
+   "x": 2480,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i118",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      },
+      {
+       "icon": "volume_up",
+       "label": "Sesli oku"
+      }
+     ],
+     "note": "Araç çubuğuna 5. eylem 'Sesli oku' (volume_up) eklendi: kartı açar ve ilk paragraftan okumaya başlar."
+    }
+   ]
+  },
+  {
+   "id": "g121",
+   "x": 2952,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i120",
+     "kind": "topAppBar",
+     "label": "Ayarlar",
+     "icon": "arrow_back",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g123",
+   "x": 2968,
+   "y": 96,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i122",
+     "kind": "text",
+     "label": "Sakin akış",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g125",
+   "x": 2968,
+   "y": 124,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i124",
+     "kind": "listItem",
+     "label": "Sakin mod",
+     "icon": "spa",
+     "variant": "filled",
+     "supporting": "Sayaçları ve sonsuz kaydırmayı kapatır",
+     "switch": true,
+     "checked": true,
+     "note": "Mevcut ayar, değişmedi."
+    }
+   ]
+  },
+  {
+   "id": "g127",
+   "x": 2968,
+   "y": 204,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i126",
+     "kind": "text",
+     "label": "Filtreler",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g129",
+   "x": 2968,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i128",
+     "kind": "listItem",
+     "label": "Sessiz kelimeler (2)",
+     "icon": "block",
+     "variant": "filled",
+     "icon2": "chevron_right",
+     "action": {
+      "to": "f_sessiz",
+      "transition": "slide"
+     },
+     "note": "Gizlenen kelime sayısını gösterir; sessiz kelimeler ekranını açar."
+    }
+   ]
+  },
+  {
+   "id": "g131",
+   "x": 2968,
+   "y": 312,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i130",
+     "kind": "text",
+     "label": "Akış",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g133",
+   "x": 2968,
+   "y": 340,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i132",
+     "kind": "listItem",
+     "label": "7 günden eski okunmamışları otomatik okundu yap",
+     "icon": "done_all",
+     "variant": "filled",
+     "switch": true,
+     "checked": false,
+     "note": "Açıksa 7 günden eski okunmamış yazılar uygulama açılırken okundu olur; sayaç baskısı yok."
+    }
+   ]
+  },
+  {
+   "id": "g135",
+   "x": 2968,
+   "y": 420,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i134",
+     "kind": "text",
+     "label": "Görünüm",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g137",
+   "x": 2968,
+   "y": 452,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i136",
+     "kind": "text",
+     "label": "Tema",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g141",
+   "x": 2968,
+   "y": 476,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i138",
+     "kind": "button",
+     "label": "Koyu",
+     "icon": null,
+     "variant": "tonal",
+     "size": 122,
+     "note": "Seçili tema."
+    },
+    {
+     "id": "i139",
+     "kind": "button",
+     "label": "Açık",
+     "icon": null,
+     "variant": "outlined",
+     "size": 122,
+     "action": {
+      "to": "f_acik",
+      "transition": "fade"
+     }
+    },
+    {
+     "id": "i140",
+     "kind": "button",
+     "label": "Sistem",
+     "icon": null,
+     "variant": "outlined",
+     "size": 122
+    }
+   ]
+  },
+  {
+   "id": "g143",
+   "x": 2968,
+   "y": 540,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i142",
+     "kind": "text",
+     "label": "Yazı tipi",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g146",
+   "x": 2968,
+   "y": 564,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i144",
+     "kind": "button",
+     "label": "Sans",
+     "icon": null,
+     "variant": "tonal",
+     "size": 186,
+     "note": "Seçili yazı tipi."
+    },
+    {
+     "id": "i145",
+     "kind": "button",
+     "label": "Serif",
+     "icon": null,
+     "variant": "outlined",
+     "size": 186
+    }
+   ]
+  },
+  {
+   "id": "g148",
+   "x": 2968,
+   "y": 632,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i147",
+     "kind": "listItem",
+     "label": "Okuma özeti",
+     "icon": "insights",
+     "variant": "filled",
+     "supporting": "Haftalık dakika ve yazı sayısı",
+     "icon2": "chevron_right",
+     "action": {
+      "to": "f_ozet",
+      "transition": "slide"
+     },
+     "note": "Haftalık okuma özetini açar."
+    }
+   ]
+  },
+  {
+   "id": "g150",
+   "x": 3444,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i149",
+     "kind": "topAppBar",
+     "label": "Okuma özeti",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "actions": {
+      "icon": {
+       "to": "f_ayar",
+       "transition": "slide"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "g152",
+   "x": 3460,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i151",
+     "kind": "text",
+     "label": "Bu hafta",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g154",
+   "x": 3460,
+   "y": 136,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i153",
+     "kind": "card",
+     "label": "42",
+     "icon": null,
+     "variant": "filled",
+     "supporting": "Toplam dakika",
+     "noImage": true,
+     "size": 121,
+     "size2": 104,
+     "note": "Eşit istatistik karosu, 16dp, #0E153F."
+    }
+   ]
+  },
+  {
+   "id": "g156",
+   "x": 3589,
+   "y": 136,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i155",
+     "kind": "card",
+     "label": "18",
+     "icon": null,
+     "variant": "filled",
+     "supporting": "Yazı sayısı",
+     "noImage": true,
+     "size": 121,
+     "size2": 104,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g158",
+   "x": 3718,
+   "y": 136,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i157",
+     "kind": "card",
+     "label": "Webtekno",
+     "icon": null,
+     "variant": "filled",
+     "supporting": "En çok okunan kaynak",
+     "noImage": true,
+     "size": 121,
+     "size2": 104,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g160",
+   "x": 3460,
+   "y": 260,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i159",
+     "kind": "text",
+     "label": "Son 7 gün (dakika)",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g162",
+   "x": 3460,
+   "y": 400,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i161",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 47,
+     "size2": 100,
+     "fill": "secondaryContainer",
+     "radiusTop": 16,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g164",
+   "x": 3468,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i163",
+     "kind": "text",
+     "label": "Pzt",
+     "icon": null,
+     "variant": "filled",
+     "size": 12
+    }
+   ]
+  },
+  {
+   "id": "g166",
+   "x": 3515,
+   "y": 380,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i165",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 47,
+     "size2": 120,
+     "fill": "secondaryContainer",
+     "radiusTop": 16,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g168",
+   "x": 3523,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i167",
+     "kind": "text",
+     "label": "Sal",
+     "icon": null,
+     "variant": "filled",
+     "size": 12
+    }
+   ]
+  },
+  {
+   "id": "g170",
+   "x": 3570,
+   "y": 420,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i169",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 47,
+     "size2": 80,
+     "fill": "secondaryContainer",
+     "radiusTop": 16,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g172",
+   "x": 3578,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i171",
+     "kind": "text",
+     "label": "Çar",
+     "icon": null,
+     "variant": "filled",
+     "size": 12
+    }
+   ]
+  },
+  {
+   "id": "g174",
+   "x": 3625,
+   "y": 380,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i173",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 47,
+     "size2": 120,
+     "fill": "primary",
+     "radiusTop": 16,
+     "note": "Bugün (Per) vurgulu: 12 dk. Diğer çubuklar #2F3B9F, eşit genişlikte."
+    }
+   ]
+  },
+  {
+   "id": "g176",
+   "x": 3633,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i175",
+     "kind": "text",
+     "label": "Per",
+     "icon": null,
+     "variant": "filled",
+     "size": 12
+    }
+   ]
+  },
+  {
+   "id": "g178",
+   "x": 3680,
+   "y": 496,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i177",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 47,
+     "size2": 4,
+     "fill": "secondaryContainer",
+     "radiusTop": 16,
+     "note": "Gelecek günler boş, en az çizgi."
+    }
+   ]
+  },
+  {
+   "id": "g180",
+   "x": 3688,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i179",
+     "kind": "text",
+     "label": "Cum",
+     "icon": null,
+     "variant": "filled",
+     "size": 12
+    }
+   ]
+  },
+  {
+   "id": "g182",
+   "x": 3735,
+   "y": 496,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i181",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 47,
+     "size2": 4,
+     "fill": "secondaryContainer",
+     "radiusTop": 16,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g184",
+   "x": 3743,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i183",
+     "kind": "text",
+     "label": "Cmt",
+     "icon": null,
+     "variant": "filled",
+     "size": 12
+    }
+   ]
+  },
+  {
+   "id": "g186",
+   "x": 3790,
+   "y": 496,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i185",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 47,
+     "size2": 4,
+     "fill": "secondaryContainer",
+     "radiusTop": 16,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g188",
+   "x": 3798,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i187",
+     "kind": "text",
+     "label": "Paz",
+     "icon": null,
+     "variant": "filled",
+     "size": 12
+    }
+   ]
+  },
+  {
+   "id": "g190",
+   "x": 3460,
+   "y": 560,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i189",
+     "kind": "text",
+     "label": "Bu hafta 42 dk okudun",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true,
+     "note": "Sakin cümle; karşılaştırma, seri, rozet ya da hedef yok."
+    }
+   ]
+  },
+  {
+   "id": "g192",
+   "x": 3936,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i191",
+     "kind": "topAppBar",
+     "label": "Webtekno",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "text_fields",
+     "note": "Açık tema: arka plan #F6F7FF, metin #1B1B2F."
+    }
+   ]
+  },
+  {
+   "id": "g194",
+   "x": 3952,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i193",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g196",
+   "x": 3952,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i195",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g199",
+   "x": 3952,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i197",
+     "kind": "button",
+     "label": "Özet",
+     "icon": null,
+     "variant": "tonal",
+     "size": 188,
+     "note": "Seçili; vurgu konteyneri #C9D2FF."
+    },
+    {
+     "id": "i198",
+     "kind": "button",
+     "label": "Tam metni getir",
+     "icon": "cloud_download",
+     "variant": "outlined",
+     "size": 188
+    }
+   ]
+  },
+  {
+   "id": "g201",
+   "x": 3952,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i200",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g203",
+   "x": 3952,
+   "y": 338,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i202",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g205",
+   "x": 3952,
+   "y": 372,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i204",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g207",
+   "x": 3952,
+   "y": 406,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i206",
+     "kind": "text",
+     "label": "günlük kullanımda da fark edileceğini söylüyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g209",
+   "x": 3982,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i208",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ],
+     "note": "Araç çubuğu kartı #E9ECFA."
+    }
+   ]
+  },
+  {
+   "id": "g211",
+   "x": 4444,
+   "y": 16,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i210",
+     "kind": "searchBar",
+     "label": "Yazılarda ara",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "close",
+     "note": "Alana 'kripto' yazıldı; X yazıyı siler."
+    }
+   ]
+  },
+  {
+   "id": "g213",
+   "x": 4586,
+   "y": 300,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i212",
+     "kind": "fab",
+     "label": "search_off",
+     "icon": null,
+     "variant": "tonal",
+     "size": 96,
+     "note": "Yalnızca simge, eylem yok."
+    }
+   ]
+  },
+  {
+   "id": "g215",
+   "x": 4444,
+   "y": 424,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i214",
+     "kind": "text",
+     "label": "Eşleşen yazı yok",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g217",
+   "x": 4444,
+   "y": 464,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i216",
+     "kind": "text",
+     "label": "Başka bir sözcük dene.",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g219",
+   "x": 4920,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i218",
+     "kind": "topAppBar",
+     "label": "Kaynaklar",
+     "icon": "arrow_back",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g221",
+   "x": 4936,
+   "y": 104,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i220",
+     "kind": "listItem",
+     "label": "Webtekno",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "webtekno.com"
+    }
+   ]
+  },
+  {
+   "id": "g223",
+   "x": 5120,
+   "y": 124,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i222",
+     "kind": "chip",
+     "label": "Teknoloji",
+     "icon": null,
+     "variant": "filled",
+     "note": "Küçük grup etiketi; yalnızca bilgi."
+    }
+   ]
+  },
+  {
+   "id": "g225",
+   "x": 5230,
+   "y": 112,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i224",
+     "kind": "button",
+     "label": "Grup",
+     "icon": null,
+     "variant": "text",
+     "size": 72,
+     "action": {
+      "to": "f_gsec",
+      "transition": "slideUp"
+     },
+     "note": "Grup eylemi: gruba atama alt sayfasını açar."
+    }
+   ]
+  },
+  {
+   "id": "g227",
+   "x": 4936,
+   "y": 184,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i226",
+     "kind": "listItem",
+     "label": "ShiftDelete",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "shiftdelete.net"
+    }
+   ]
+  },
+  {
+   "id": "g229",
+   "x": 5120,
+   "y": 204,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i228",
+     "kind": "chip",
+     "label": "Teknoloji",
+     "icon": null,
+     "variant": "filled",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g231",
+   "x": 5230,
+   "y": 192,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i230",
+     "kind": "button",
+     "label": "Grup",
+     "icon": null,
+     "variant": "text",
+     "size": 72,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g233",
+   "x": 4936,
+   "y": 264,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i232",
+     "kind": "listItem",
+     "label": "BBC Türkçe",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "bbc.com/turkce"
+    }
+   ]
+  },
+  {
+   "id": "g235",
+   "x": 5120,
+   "y": 284,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i234",
+     "kind": "chip",
+     "label": "Haber",
+     "icon": null,
+     "variant": "filled",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g237",
+   "x": 5230,
+   "y": 272,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i236",
+     "kind": "button",
+     "label": "Grup",
+     "icon": null,
+     "variant": "text",
+     "size": 72,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g239",
+   "x": 4936,
+   "y": 344,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i238",
+     "kind": "listItem",
+     "label": "Fanatik",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "fanatik.com.tr"
+    }
+   ]
+  },
+  {
+   "id": "g241",
+   "x": 5120,
+   "y": 364,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i240",
+     "kind": "chip",
+     "label": "Spor",
+     "icon": null,
+     "variant": "filled",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g243",
+   "x": 5230,
+   "y": 352,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i242",
+     "kind": "button",
+     "label": "Grup",
+     "icon": null,
+     "variant": "text",
+     "size": 72,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g245",
+   "x": 4936,
+   "y": 424,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i244",
+     "kind": "listItem",
+     "label": "Chip Online",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "chip.com.tr"
+    }
+   ]
+  },
+  {
+   "id": "g247",
+   "x": 5120,
+   "y": 444,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i246",
+     "kind": "chip",
+     "label": "Grupsuz",
+     "icon": null,
+     "variant": "outlined",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g249",
+   "x": 5230,
+   "y": 432,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i248",
+     "kind": "button",
+     "label": "Grup",
+     "icon": null,
+     "variant": "text",
+     "size": 72,
+     "note": ""
+    }
+   ]
+  },
+  {
+   "id": "g251",
+   "x": 5260,
+   "y": 812,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i250",
+     "kind": "fab",
+     "label": "add",
+     "icon": null,
+     "variant": "filled",
+     "size": 56
+    }
+   ]
+  },
+  {
+   "id": "g253",
+   "x": 5412,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i252",
+     "kind": "topAppBar",
+     "label": "Kaynaklar",
+     "icon": "arrow_back",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g255",
+   "x": 5428,
+   "y": 104,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i254",
+     "kind": "listItem",
+     "label": "Webtekno",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "webtekno.com"
+    }
+   ]
+  },
+  {
+   "id": "g257",
+   "x": 5412,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i256",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 892,
+     "fill": "inverseSurface",
+     "note": "Karartma."
+    }
+   ]
+  },
+  {
+   "id": "g259",
+   "x": 5412,
+   "y": 432,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i258",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 460,
+     "checked": true,
+     "radiusTop": 16,
+     "note": "Alt sayfa #0E153F, 16dp köşe."
+    }
+   ]
+  },
+  {
+   "id": "g261",
+   "x": 5428,
+   "y": 448,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i260",
+     "kind": "text",
+     "label": "Grup seç · Webtekno",
+     "icon": null,
+     "variant": "filled",
+     "size": 22,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g265",
+   "x": 5428,
+   "y": 496,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i262",
+     "kind": "chip",
+     "label": "Haber",
+     "icon": null,
+     "variant": "filled"
+    },
+    {
+     "id": "i263",
+     "kind": "chip",
+     "label": "Teknoloji",
+     "icon": null,
+     "variant": "filled",
+     "checked": true,
+     "note": "Tek seçim; seçili grup #2F3B9F."
+    },
+    {
+     "id": "i264",
+     "kind": "chip",
+     "label": "Spor",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g267",
+   "x": 5428,
+   "y": 552,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i266",
+     "kind": "textField",
+     "label": "Yeni grup adı",
+     "icon": "create_new_folder",
+     "variant": "outlined",
+     "note": "Yazılan ad yeni bir grup olarak oluşturulur ve bu kaynağa atanır."
+    }
+   ]
+  },
+  {
+   "id": "g269",
+   "x": 5428,
+   "y": 624,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i268",
+     "kind": "button",
+     "label": "Kaydet",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "note": "Seçili ya da yeni grubu kaynağa atar, sayfayı kapatır."
+    }
+   ]
+  },
+  {
+   "id": "g271",
+   "x": 5428,
+   "y": 696,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i270",
+     "kind": "button",
+     "label": "Gruptan çıkar",
+     "icon": null,
+     "variant": "text",
+     "size": 380,
+     "note": "Kaynağı gruptan çıkarır (Grupsuz)."
+    }
+   ]
+  },
+  {
+   "id": "g273",
+   "x": 5904,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i272",
+     "kind": "topAppBar",
+     "label": "Webtekno",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "text_fields",
+     "actions": {
+      "icon": {
+       "to": "back",
+       "transition": "slide"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

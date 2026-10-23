@@ -1,0 +1,1141 @@
+{
+ "title": "Akış - Sakin okuma",
+ "brief": "Sakin, sınırlı, bağımlılık yapmayan RSS okuma: günlük sınır, mola hatırlatıcı, hızlı okuma.",
+ "frame": "phone",
+ "platform": "android",
+ "paletteKey": "blue",
+ "theme": {
+  "dark": true,
+  "bothModes": false,
+  "contrast": "standard",
+  "shape": "rounded",
+  "font": "robotoFlex",
+  "emphasized": true,
+  "motion": "expressive"
+ },
+ "frames": [
+  {
+   "id": "f1",
+   "name": "Akış (sakin ana ekran)",
+   "x": 0,
+   "y": 0,
+   "note": "Sakin ana ekran: sayaçsız başlık satırı, eşit karolar ve bitiş kartı. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil metin #8A8FB5. Tek köşe yarıçapı 16dp, boşluk 8dp, yalnızca dalgalı ilerleme.",
+   "bg": "surface"
+  },
+  {
+   "id": "f2",
+   "name": "Hepsi bitti",
+   "x": 492,
+   "y": 0,
+   "note": "Hepsi okununca sakin son ekran; tek eylem Kaynakları yönet. Sonsuz kaydırma ve yeni yazı teşviki yok.",
+   "bg": "surface"
+  },
+  {
+   "id": "f3",
+   "name": "Mola hatırlatması",
+   "x": 984,
+   "y": 0,
+   "note": "Okuyucuda engellemeyen mola kartı.",
+   "bg": "surface"
+  },
+  {
+   "id": "f4",
+   "name": "Ayarlar",
+   "x": 1476,
+   "y": 0,
+   "note": "Sakin akış ve Okuma ayarları. Grup seçimleri bağlı düğmelerdir.",
+   "bg": "surface"
+  },
+  {
+   "id": "f5",
+   "name": "Hızlı okuma açık",
+   "x": 1968,
+   "y": 0,
+   "note": "Hızlı okuma açık okuyucu: kelime başları kalın, okuma süresi çipi, geniş satır aralığı.",
+   "bg": "surface"
+  }
+ ],
+ "groups": [
+  {
+   "id": "g1",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_bar",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "refresh",
+     "note": "Başlık Akış. Eylemler: yenile (sağda), kaynaklar, ayarlar. Arka plan #060A2D."
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "x": 256,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_src",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "list",
+     "variant": "text",
+     "note": "Kaynaklar: kaynak listesini açar (mevcut Kaynaklar ekranı)."
+    }
+   ]
+  },
+  {
+   "id": "g3",
+   "x": 304,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_set",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "settings",
+     "variant": "text",
+     "action": {
+      "to": "f4",
+      "transition": "slide"
+     },
+     "note": "Ayarlar: Sakin akış ve Okuma ayarlarını açar."
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "x": 16,
+   "y": 96,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_head",
+     "kind": "text",
+     "label": "Bugün 12 yazı • yaklaşık 18 dk",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "note": "Sessiz başlık satırı; okunmamış sayacı, nokta ve rozet yok. Renk #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g5",
+   "x": 16,
+   "y": 128,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t0",
+     "kind": "card",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     },
+     "note": "Eşit karo, 16dp köşe, #0E153F. Okunmamış noktası ve sayı yok; dokununca okuyucu açılır."
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "x": 210,
+   "y": 128,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t1",
+     "kind": "card",
+     "label": "Android 17 beta sürümü yayınlandı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g7",
+   "x": 16,
+   "y": 256,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t2",
+     "kind": "card",
+     "label": "Elektrikli araç satışları üçüncü çeyrekte arttı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Donanım Haber · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g8",
+   "x": 210,
+   "y": 256,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t3",
+     "kind": "card",
+     "label": "Yeni nesil işlemciler tanıtıldı: neler değişiyor?",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g9",
+   "x": 16,
+   "y": 384,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t4",
+     "kind": "card",
+     "label": "Açık kaynak projeler için yeni destek programı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Chip Online · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "x": 210,
+   "y": 384,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t5",
+     "kind": "card",
+     "label": "Uzay teleskobu uzak bir galaksiyi görüntüledi",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "BBC Türkçe · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g11",
+   "x": 16,
+   "y": 512,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t6",
+     "kind": "card",
+     "label": "Haftanın en çok okunan teknoloji haberleri",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g12",
+   "x": 210,
+   "y": 512,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_t7",
+     "kind": "card",
+     "label": "Tarayıcılarda gizlilik ayarları nasıl yapılır?",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g13",
+   "x": 16,
+   "y": 640,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_end",
+     "kind": "card",
+     "label": "Bugünlük bu kadar 🌿",
+     "icon": "spa",
+     "variant": "filled",
+     "supporting": "Kalan 42 yazı yarın seni bekliyor",
+     "noImage": true,
+     "size": 380,
+     "size2": 176,
+     "note": "Izgaranın sonu: tam genişlik uç kartı, 16dp köşe, #0E153F. Sonsuz kaydırma yok; liste burada biter."
+    }
+   ]
+  },
+  {
+   "id": "g14",
+   "x": 32,
+   "y": 732,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a_more",
+     "kind": "button",
+     "label": "Daha fazla göster",
+     "icon": null,
+     "variant": "tonal",
+     "size": 348,
+     "note": "Sessiz tonal düğme #2F3B9F. Dokununca günlük sınıra bir parti (ör. 10 yazı) daha ekler; otomatik yüklenmez."
+    }
+   ]
+  },
+  {
+   "id": "g15",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b_bar",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "refresh"
+    }
+   ]
+  },
+  {
+   "id": "g16",
+   "x": 650,
+   "y": 300,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b_em",
+     "kind": "text",
+     "label": "🌿",
+     "icon": null,
+     "variant": "filled",
+     "size": 96,
+     "note": "Büyük sakin emoji bloğu."
+    }
+   ]
+  },
+  {
+   "id": "g17",
+   "x": 602,
+   "y": 440,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b_t",
+     "kind": "text",
+     "label": "Hepsini okudun",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true,
+     "note": "Başlık #DDE2FF."
+    }
+   ]
+  },
+  {
+   "id": "g18",
+   "x": 576,
+   "y": 484,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b_s",
+     "kind": "text",
+     "label": "Şimdi telefonu bırakabilirsin",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "note": "İkincil metin #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "x": 622,
+   "y": 530,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b_btn",
+     "kind": "button",
+     "label": "Kaynakları yönet",
+     "icon": null,
+     "variant": "text",
+     "note": "Tek eylem: küçük metin düğmesi, Kaynaklar ekranını açar. Başka düğme yok (yenile/daha fazla yok)."
+    }
+   ]
+  },
+  {
+   "id": "g20",
+   "x": 984,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_bar",
+     "kind": "topAppBar",
+     "label": "",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "more_vert",
+     "actions": {
+      "icon": {
+       "to": "f1",
+       "transition": "slide"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "g21",
+   "x": 1000,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_t",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true,
+     "note": "Başlık #DDE2FF."
+    }
+   ]
+  },
+  {
+   "id": "g22",
+   "x": 1000,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_s",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "note": "İkincil metin #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g23",
+   "x": 1000,
+   "y": 244,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_b0",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17,
+     "note": "Gövde düz metin, satır yüksekliği 34dp. Mola kartı altta durur, metni örtmez ve kaydırmayı engellemez."
+    }
+   ]
+  },
+  {
+   "id": "g24",
+   "x": 1000,
+   "y": 278,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_b1",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "x": 1000,
+   "y": 312,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_b2",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g26",
+   "x": 1000,
+   "y": 346,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_b3",
+     "kind": "text",
+     "label": "günlük kullanımda da fark edileceğini söylüyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "x": 1000,
+   "y": 380,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_b4",
+     "kind": "text",
+     "label": "Uzmanlara göre asıl değişiklik, modellerin daha az",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g28",
+   "x": 1000,
+   "y": 616,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_card",
+     "kind": "card",
+     "label": "30 dakikadır okuyorsun. Kısa bir mola iyi gelir.",
+     "icon": "self_improvement",
+     "variant": "filled",
+     "noImage": true,
+     "size": 380,
+     "size2": 152,
+     "note": "Engellemeyen mola kartı: okuyucunun altında, #0E153F, 16dp köşe. Ayarlardaki mola süresi dolunca belirir; ses/titreşim yok."
+    }
+   ]
+  },
+  {
+   "id": "g29",
+   "x": 1008,
+   "y": 688,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_ok",
+     "kind": "button",
+     "label": "Devam et",
+     "icon": null,
+     "variant": "tonal",
+     "size": 172,
+     "action": {
+      "to": "f3",
+      "transition": "fade"
+     },
+     "note": "Kartı kapatır, okumaya devam eder; sayaç sıfırlanır."
+    },
+    {
+     "id": "c_end",
+     "kind": "button",
+     "label": "Bitir",
+     "icon": null,
+     "variant": "outlined",
+     "size": 172,
+     "action": {
+      "to": "f2",
+      "transition": "fade"
+     },
+     "note": "Okumayı bitirir ve sakin ekrana (Hepsi bitti) döner."
+    }
+   ]
+  },
+  {
+   "id": "g30",
+   "x": 1030,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c_tb",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ],
+     "note": "Okuyucu araç çubuğu, ana okuyucuyla aynı."
+    }
+   ]
+  },
+  {
+   "id": "g31",
+   "x": 1476,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_bar",
+     "kind": "topAppBar",
+     "label": "Ayarlar",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "actions": {
+      "icon": {
+       "to": "f1",
+       "transition": "slide"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "g32",
+   "x": 1492,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_h1",
+     "kind": "text",
+     "label": "Sakin akış",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true,
+     "note": "Bölüm başlığı (erişilebilirlik: başlık olarak işaretli)."
+    }
+   ]
+  },
+  {
+   "id": "g33",
+   "x": 1492,
+   "y": 136,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_sw",
+     "kind": "listItem",
+     "label": "Sakin mod",
+     "icon": "spa",
+     "variant": "filled",
+     "supporting": "Sayaçları ve sonsuz kaydırmayı kapatır",
+     "switch": true,
+     "checked": true,
+     "note": "Açıkken ana ekran sınırlı ve sayaçsızdır."
+    }
+   ]
+  },
+  {
+   "id": "g34",
+   "x": 1492,
+   "y": 224,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_l1",
+     "kind": "text",
+     "label": "Günlük sınır",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "note": "Bağlı grup başlığı. İkincil metin #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g35",
+   "x": 1492,
+   "y": 248,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_g1",
+     "kind": "button",
+     "label": "15",
+     "icon": null,
+     "variant": "outlined",
+     "size": 92
+    },
+    {
+     "id": "d_g2",
+     "kind": "button",
+     "label": "30",
+     "icon": null,
+     "variant": "tonal",
+     "size": 92,
+     "note": "Seçili: #2F3B9F. Günde gösterilecek en fazla yazı sayısı."
+    },
+    {
+     "id": "d_g3",
+     "kind": "button",
+     "label": "50",
+     "icon": null,
+     "variant": "outlined",
+     "size": 92
+    },
+    {
+     "id": "d_g4",
+     "kind": "button",
+     "label": "Sınırsız",
+     "icon": null,
+     "variant": "outlined",
+     "size": 92
+    }
+   ]
+  },
+  {
+   "id": "g36",
+   "x": 1492,
+   "y": 320,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_l2",
+     "kind": "text",
+     "label": "Mola hatırlatıcı",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "note": "İkincil metin #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "x": 1492,
+   "y": 344,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_m1",
+     "kind": "button",
+     "label": "Kapalı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 122
+    },
+    {
+     "id": "d_m2",
+     "kind": "button",
+     "label": "15 dk",
+     "icon": null,
+     "variant": "outlined",
+     "size": 122
+    },
+    {
+     "id": "d_m3",
+     "kind": "button",
+     "label": "30 dk",
+     "icon": null,
+     "variant": "tonal",
+     "size": 122,
+     "note": "Seçili: okuma süresi dolunca mola kartı çıkar."
+    }
+   ]
+  },
+  {
+   "id": "g38",
+   "x": 1492,
+   "y": 432,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_h2",
+     "kind": "text",
+     "label": "Okuma",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g39",
+   "x": 1492,
+   "y": 476,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_l3",
+     "kind": "text",
+     "label": "Yazı boyutu",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "note": "İkincil metin #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g40",
+   "x": 1492,
+   "y": 500,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_f1",
+     "kind": "button",
+     "label": "Küçük",
+     "icon": null,
+     "variant": "outlined",
+     "size": 92
+    },
+    {
+     "id": "d_f2",
+     "kind": "button",
+     "label": "Normal",
+     "icon": null,
+     "variant": "tonal",
+     "size": 92
+    },
+    {
+     "id": "d_f3",
+     "kind": "button",
+     "label": "Büyük",
+     "icon": null,
+     "variant": "outlined",
+     "size": 92
+    },
+    {
+     "id": "d_f4",
+     "kind": "button",
+     "label": "Çok büyük",
+     "icon": null,
+     "variant": "outlined",
+     "size": 92,
+     "note": "Dar ekranda iki satıra sarabilir; kod aşamasında kontrol edilmeli."
+    }
+   ]
+  },
+  {
+   "id": "g41",
+   "x": 1492,
+   "y": 572,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d_sw2",
+     "kind": "listItem",
+     "label": "Hızlı okuma",
+     "icon": "bolt",
+     "variant": "filled",
+     "supporting": "Kelime başlarını kalın yapar",
+     "switch": true,
+     "checked": false,
+     "note": "Açıkken okuyucuda her kelimenin ilk harfleri kalın gösterilir."
+    }
+   ]
+  },
+  {
+   "id": "g42",
+   "x": 1968,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_bar",
+     "kind": "topAppBar",
+     "label": "",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "more_vert",
+     "actions": {
+      "icon": {
+       "to": "f1",
+       "transition": "slide"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "g43",
+   "x": 1984,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_t",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g44",
+   "x": 1984,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_chip",
+     "kind": "chip",
+     "label": "3 dk okuma",
+     "icon": "schedule",
+     "variant": "filled",
+     "checked": true,
+     "note": "Tahmini okuma süresi, başlığın altında. Arka plan #2F3B9F."
+    }
+   ]
+  },
+  {
+   "id": "g45",
+   "x": 1984,
+   "y": 240,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_s",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "note": "İkincil metin #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g46",
+   "x": 1984,
+   "y": 288,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_b0",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17,
+     "note": "Hızlı okuma açık: her kelimenin ilk 1-3 harfi kalın (ör. **Araş**tırmacılar **bu** **haf**ta **yayı**mlanan). Canvas satır içi kalın gösteremez, düz metin çizildi. Satır yüksekliği geniş: 44dp (yaklaşık 2.6)."
+    }
+   ]
+  },
+  {
+   "id": "g47",
+   "x": 1984,
+   "y": 332,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_b1",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g48",
+   "x": 1984,
+   "y": 376,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_b2",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g49",
+   "x": 1984,
+   "y": 420,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_b3",
+     "kind": "text",
+     "label": "günlük kullanımda da fark edileceğini söylüyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g50",
+   "x": 1984,
+   "y": 464,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_b4",
+     "kind": "text",
+     "label": "Uzmanlara göre asıl değişiklik, modellerin daha az",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g51",
+   "x": 1984,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_b5",
+     "kind": "text",
+     "label": "enerjiyle çalışabilmesi. Bu da cihaz üzerinde",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g52",
+   "x": 1984,
+   "y": 552,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_b6",
+     "kind": "text",
+     "label": "çalışan uygulamaların önünü açıyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g53",
+   "x": 2014,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_tb",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ],
+     "note": "Okuyucu araç çubuğu, ana okuyucuyla aynı."
+    }
+   ]
+  }
+ ]
+}

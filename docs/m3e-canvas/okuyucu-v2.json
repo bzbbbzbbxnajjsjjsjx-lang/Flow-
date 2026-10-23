@@ -1,0 +1,1431 @@
+{
+ "title": "Akış",
+ "brief": "Sade, koyu lacivert RSS okuyucu: okuyucu v2 (yazı boyutu, tam metin, video yazıları).",
+ "frame": "phone",
+ "platform": "android",
+ "paletteKey": "blue",
+ "theme": {
+  "dark": true,
+  "bothModes": false,
+  "contrast": "standard",
+  "shape": "rounded",
+  "font": "robotoFlex",
+  "emphasized": true,
+  "motion": "expressive"
+ },
+ "frames": [
+  {
+   "id": "o1",
+   "name": "Okuyucu",
+   "x": 0,
+   "y": 0,
+   "bg": "surface",
+   "note": "Normal makale okuyucusu. Üstte geri, kaynak adı ve yeni Aa (yazı boyutu) eylemi; başlığın altında Özet | Tam metin bağlı düğme grubu. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp."
+  },
+  {
+   "id": "o2",
+   "name": "Tam metin yükleniyor",
+   "x": 492,
+   "y": 0,
+   "bg": "surface",
+   "note": "Aynı ekran; Tam metin seçildi, sayfa HTTPS ile alınırken çubuğun altında dalgalı doğrusal ilerleme görünür. Özet metni gelene kadar yerinde kalır."
+  },
+  {
+   "id": "o3",
+   "name": "Tam metin hata",
+   "x": 984,
+   "y": 0,
+   "bg": "surface",
+   "note": "Tam metin alınamadı: satır içi hata kartı, Tekrar dene ve Tarayıcıda aç düğmeleri. Özet metni gösterilmeye devam eder, ekran kapanmaz."
+  },
+  {
+   "id": "o4",
+   "name": "Yazı boyutu",
+   "x": 1476,
+   "y": 0,
+   "bg": "surface",
+   "note": "Okuyucunun üstünde alt sayfa (#0E153F, 16dp köşe): canlı önizleme, dört seçenekli bağlı grup. Seçim kalıcı saklanır ve tüm makalelere uygulanır."
+  },
+  {
+   "id": "o5",
+   "name": "Video yazısı",
+   "x": 1968,
+   "y": 0,
+   "bg": "surface",
+   "note": "YouTube girdisi için okuyucu. WebView yok, Akış içinde hiçbir şey oynatılmaz; video yüklü YouTube veya NewPipe uygulamasında açılır. Altında açıklama metni."
+  },
+  {
+   "id": "o6",
+   "name": "Akış listesi",
+   "x": 2460,
+   "y": 0,
+   "bg": "surface",
+   "note": "Ana ızgara; iki video karosunda küçük oynat rozeti ve zamanın yanında Video etiketi. Karolar eşit boyutta, 16dp köşe, 8dp boşluk."
+  }
+ ],
+ "groups": [
+  {
+   "id": "g1",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bar1",
+     "kind": "topAppBar",
+     "label": "Webtekno",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "text_fields",
+     "actions": {
+      "icon": {
+       "to": "o6",
+       "transition": "slide"
+      },
+      "icon2": {
+       "to": "o4",
+       "transition": "slideUp"
+      }
+     },
+     "note": "Geri: önceki ekran. Aa (yeni): yazı boyutu alt sayfasını açar. Arka plan #060A2D."
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "x": 16,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "t1",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "bold": true,
+     "note": "Başlık #DDE2FF.",
+     "size": 24
+    }
+   ]
+  },
+  {
+   "id": "g3",
+   "x": 16,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "s1",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "note": "Kaynak ve tarih #8A8FB5.",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "x": 16,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sg1_1",
+     "kind": "button",
+     "label": "Özet",
+     "icon": null,
+     "variant": "tonal",
+     "size": 188,
+     "note": "Özet: akıştaki özet metnini gösterir. Seçili düğme vurgu konteyneri #2F3B9F."
+    },
+    {
+     "id": "sg2_1",
+     "kind": "button",
+     "label": "Tam metni getir",
+     "icon": "cloud_download",
+     "variant": "outlined",
+     "size": 188,
+     "note": "Tam metin: makalenin sayfasını yalnızca HTTPS ile getirir. Yüklenmeden önce etiket Tam metni getir; dokununca yükleme başlar (örnek akış: yükleniyor ekranı). Yüklendikten sonra etiket Tam metin olur ve sonuç saklanır.",
+     "action": {
+      "to": "o2",
+      "transition": "fade"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g5",
+   "x": 16,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b1_0",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "note": "Gövde düz metin, satır yüksekliği 34dp (yazı boyutuna göre ölçeklenir), metin #DDE2FF.",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "x": 16,
+   "y": 338,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b1_1",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g7",
+   "x": 16,
+   "y": 372,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b1_2",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g8",
+   "x": 16,
+   "y": 406,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b1_3",
+     "kind": "text",
+     "label": "günlük kullanımda da fark edileceğini söylüyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g9",
+   "x": 46,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tb1",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ],
+     "note": "Okuyucu araç çubuğu ana taslaktaki ile aynı."
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bar2",
+     "kind": "topAppBar",
+     "label": "Webtekno",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "text_fields",
+     "actions": {
+      "icon": {
+       "to": "back",
+       "transition": "slide"
+      },
+      "icon2": {
+       "to": "o4",
+       "transition": "slideUp"
+      }
+     },
+     "note": "Geri: önceki ekran. Aa (yeni): yazı boyutu alt sayfasını açar. Arka plan #060A2D."
+    }
+   ]
+  },
+  {
+   "id": "g11",
+   "x": 508,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "t2",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "bold": true,
+     "size": 24
+    }
+   ]
+  },
+  {
+   "id": "g12",
+   "x": 508,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "s2",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g13",
+   "x": 508,
+   "y": 88,
+   "axis": "x",
+   "items": [
+    {
+     "id": "prog2",
+     "kind": "linearProgress",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "wavy": true,
+     "note": "Tam metin alınırken dalgalı doğrusal ilerleme; yalnızca dalgalı gösterge kullanılır."
+    }
+   ]
+  },
+  {
+   "id": "g14",
+   "x": 508,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sg1_2",
+     "kind": "button",
+     "label": "Özet",
+     "icon": null,
+     "variant": "outlined",
+     "size": 188,
+     "note": "Özet: akıştaki özet metnini gösterir. Seçili düğme vurgu konteyneri #2F3B9F."
+    },
+    {
+     "id": "sg2_2",
+     "kind": "button",
+     "label": "Tam metin",
+     "icon": null,
+     "variant": "tonal",
+     "size": 188,
+     "note": "Seçili: vurgu konteyneri #2F3B9F. Yükleme sürerken tekrar dokunmak yeni istek başlatmaz."
+    }
+   ]
+  },
+  {
+   "id": "g15",
+   "x": 508,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "ld2",
+     "kind": "text",
+     "label": "Tam metin getiriliyor…",
+     "icon": null,
+     "variant": "filled",
+     "note": "Durum metni #8A8FB5.",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g16",
+   "x": 508,
+   "y": 344,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c2_0",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g17",
+   "x": 508,
+   "y": 378,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c2_1",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g18",
+   "x": 508,
+   "y": 412,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c2_2",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "x": 538,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tb2",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ],
+     "action": {
+      "to": "o3",
+      "transition": "fade"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g20",
+   "x": 984,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bar3",
+     "kind": "topAppBar",
+     "label": "Webtekno",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "text_fields",
+     "actions": {
+      "icon": {
+       "to": "back",
+       "transition": "slide"
+      },
+      "icon2": {
+       "to": "o4",
+       "transition": "slideUp"
+      }
+     },
+     "note": "Geri: önceki ekran. Aa (yeni): yazı boyutu alt sayfasını açar. Arka plan #060A2D."
+    }
+   ]
+  },
+  {
+   "id": "g21",
+   "x": 1000,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "t3",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "bold": true,
+     "size": 24
+    }
+   ]
+  },
+  {
+   "id": "g22",
+   "x": 1000,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "s3",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g23",
+   "x": 1000,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sg1_3",
+     "kind": "button",
+     "label": "Özet",
+     "icon": null,
+     "variant": "tonal",
+     "size": 188,
+     "note": "Özet: akıştaki özet metnini gösterir. Seçili düğme vurgu konteyneri #2F3B9F."
+    },
+    {
+     "id": "sg2_3",
+     "kind": "button",
+     "label": "Tam metni getir",
+     "icon": "cloud_download",
+     "variant": "outlined",
+     "size": 188,
+     "action": {
+      "to": "o2",
+      "transition": "fade"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g24",
+   "x": 1000,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "err3",
+     "kind": "card",
+     "label": "Tam metin alınamadı: Zaman aşımı",
+     "icon": "error",
+     "variant": "filled",
+     "supporting": "Özet gösterilmeye devam ediyor.",
+     "noImage": true,
+     "size": 380,
+     "size2": 96,
+     "note": "Satır içi hata kartı, #0E153F, 16dp köşe; başlık hata rengi #FF5449. Ekranı kapatmaz."
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "x": 1000,
+   "y": 408,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rt3",
+     "kind": "button",
+     "label": "Tekrar dene",
+     "icon": "refresh",
+     "variant": "tonal",
+     "size": 188,
+     "action": {
+      "to": "o2",
+      "transition": "fade"
+     },
+     "note": "Aynı adresi yeniden getirir; yükleme ekranına döner."
+    },
+    {
+     "id": "br3",
+     "kind": "button",
+     "label": "Tarayıcıda aç",
+     "icon": "open_in_browser",
+     "variant": "outlined",
+     "size": 188,
+     "note": "Makale bağlantısını dış tarayıcıda açar."
+    }
+   ]
+  },
+  {
+   "id": "g26",
+   "x": 1000,
+   "y": 488,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d3_0",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "x": 1000,
+   "y": 522,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d3_1",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g28",
+   "x": 1000,
+   "y": 556,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d3_2",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g29",
+   "x": 1000,
+   "y": 590,
+   "axis": "x",
+   "items": [
+    {
+     "id": "d3_3",
+     "kind": "text",
+     "label": "günlük kullanımda da fark edileceğini söylüyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g30",
+   "x": 1030,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tb3",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "g31",
+   "x": 1476,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bar4",
+     "kind": "topAppBar",
+     "label": "Webtekno",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "text_fields",
+     "actions": {
+      "icon": {
+       "to": "back",
+       "transition": "slide"
+      }
+     },
+     "note": "Geri: önceki ekran. Aa (yeni): yazı boyutu alt sayfasını açar. Arka plan #060A2D."
+    }
+   ]
+  },
+  {
+   "id": "g32",
+   "x": 1492,
+   "y": 100,
+   "axis": "x",
+   "items": [
+    {
+     "id": "t4",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "bold": true,
+     "size": 24
+    }
+   ]
+  },
+  {
+   "id": "g33",
+   "x": 1492,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "s4",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g34",
+   "x": 1492,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e4_0",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g35",
+   "x": 1492,
+   "y": 338,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e4_1",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g36",
+   "x": 1476,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "scrim4",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 892,
+     "fill": "inverseSurface",
+     "action": {
+      "to": "o1",
+      "transition": "fade"
+     },
+     "note": "Karartma; dokununca alt sayfa kapanır."
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "x": 1476,
+   "y": 540,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sheet4",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 352,
+     "checked": true,
+     "radiusTop": 16,
+     "note": "Alt sayfa #0E153F, 16dp köşe."
+    }
+   ]
+  },
+  {
+   "id": "g38",
+   "x": 1492,
+   "y": 556,
+   "axis": "x",
+   "items": [
+    {
+     "id": "st4",
+     "kind": "text",
+     "label": "Yazı boyutu",
+     "icon": null,
+     "variant": "filled",
+     "bold": true,
+     "size": 22
+    }
+   ]
+  },
+  {
+   "id": "g39",
+   "x": 1492,
+   "y": 604,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sp4a",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "note": "Canlı önizleme: seçim değişince boyut anında güncellenir. Küçük 15, Normal 17, Büyük 20, Çok büyük 24 sp.",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g40",
+   "x": 1492,
+   "y": 638,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sp4b",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g41",
+   "x": 1492,
+   "y": 704,
+   "axis": "x",
+   "items": [
+    {
+     "id": "z0",
+     "kind": "button",
+     "label": "Küçük",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "z1",
+     "kind": "button",
+     "label": "Normal",
+     "icon": null,
+     "variant": "tonal",
+     "size": 95,
+     "note": "Seçili: vurgu konteyneri #2F3B9F."
+    },
+    {
+     "id": "z2",
+     "kind": "button",
+     "label": "Büyük",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "z3",
+     "kind": "button",
+     "label": "Çok büyük",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    }
+   ]
+  },
+  {
+   "id": "g42",
+   "x": 1492,
+   "y": 780,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sn4",
+     "kind": "text",
+     "label": "Seçim hatırlanır",
+     "icon": null,
+     "variant": "filled",
+     "note": "İkincil metin #8A8FB5; seçim cihazda saklanır.",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g43",
+   "x": 1968,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bar5",
+     "kind": "topAppBar",
+     "label": "Teknoloji Kanalı",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "actions": {
+      "icon": {
+       "to": "o6",
+       "transition": "slide"
+      }
+     },
+     "note": "Geri: listeye döner. Yazı boyutu eylemi açıklama metni için de geçerli olabilir (açık soru)."
+    }
+   ]
+  },
+  {
+   "id": "g44",
+   "x": 1984,
+   "y": 104,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tile5",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 214,
+     "fill": "secondaryContainer",
+     "note": "Büyük 16:9 karo, 16dp köşe. Küçük resim yok: yalnızca simge ve metin. Karo da Videoyu uygulamada aç ile aynı işi yapar."
+    }
+   ]
+  },
+  {
+   "id": "g45",
+   "x": 2000,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tk5",
+     "kind": "text",
+     "label": "YouTube videosu",
+     "icon": null,
+     "variant": "filled",
+     "note": "Karo etiketi.",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g46",
+   "x": 2126,
+   "y": 163,
+   "axis": "x",
+   "items": [
+    {
+     "id": "play5",
+     "kind": "fab",
+     "label": "",
+     "icon": "play_arrow",
+     "variant": "filled",
+     "size": 96,
+     "note": "Oynat simgesi (96dp). Akış içinde oynatmaz; videoyu harici uygulamada açar."
+    }
+   ]
+  },
+  {
+   "id": "g47",
+   "x": 2000,
+   "y": 272,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tt5",
+     "kind": "text",
+     "label": "Yeni nesil işlemciler tanıtıldı: neler değişiyor?",
+     "icon": null,
+     "variant": "filled",
+     "bold": true,
+     "note": "Video başlığı #DDE2FF.",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g48",
+   "x": 1984,
+   "y": 334,
+   "axis": "x",
+   "items": [
+    {
+     "id": "open5",
+     "kind": "button",
+     "label": "Videoyu uygulamada aç",
+     "icon": "open_in_new",
+     "variant": "filled",
+     "size": 380,
+     "note": "Yüklü YouTube veya NewPipe uygulamasında açar (sistem seçicisi). Uygulama yoksa Tarayıcıda aç önerilir. WebView yok, Akış içinde oynatma yok. Düğme rengi #2F3B9F."
+    }
+   ]
+  },
+  {
+   "id": "g49",
+   "x": 1984,
+   "y": 402,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hint5",
+     "kind": "text",
+     "label": "YouTube veya NewPipe uygulamasında açılır",
+     "icon": null,
+     "variant": "filled",
+     "note": "İpucu #8A8FB5.",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g50",
+   "x": 1984,
+   "y": 438,
+   "axis": "x",
+   "items": [
+    {
+     "id": "s5",
+     "kind": "text",
+     "label": "Teknoloji Kanalı · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g51",
+   "x": 1984,
+   "y": 478,
+   "axis": "x",
+   "items": [
+    {
+     "id": "v5_0",
+     "kind": "text",
+     "label": "Bu videoda yeni nesil işlemcilerin mimarisini,",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g52",
+   "x": 1984,
+   "y": 512,
+   "axis": "x",
+   "items": [
+    {
+     "id": "v5_1",
+     "kind": "text",
+     "label": "performans testlerini ve fiyatlarını inceliyoruz.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g53",
+   "x": 1984,
+   "y": 546,
+   "axis": "x",
+   "items": [
+    {
+     "id": "v5_2",
+     "kind": "text",
+     "label": "Bölüm başlıkları açıklamanın altında listelenmiştir.",
+     "icon": null,
+     "variant": "filled",
+     "note": "Açıklama düz metin olarak gösterilir.",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g54",
+   "x": 2014,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tb5",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "g55",
+   "x": 2460,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bar6",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "refresh",
+     "note": "Başlık Akış; sağdaki simge yenilemeyi başlatır."
+    }
+   ]
+  },
+  {
+   "id": "g56",
+   "x": 2476,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hf0",
+     "kind": "button",
+     "label": "Tümü",
+     "icon": null,
+     "variant": "tonal",
+     "size": 124
+    },
+    {
+     "id": "hf1",
+     "kind": "button",
+     "label": "Okunmamış",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    },
+    {
+     "id": "hf2",
+     "kind": "button",
+     "label": "Yıldızlı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g57",
+   "x": 2476,
+   "y": 188,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hc0",
+     "kind": "card",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "o1",
+      "transition": "slide"
+     },
+     "note": "Eşit karo, 16dp köşe, #0E153F."
+    }
+   ]
+  },
+  {
+   "id": "g58",
+   "x": 2634,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hd0",
+     "kind": "badge",
+     "label": "",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g59",
+   "x": 2670,
+   "y": 188,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hc1",
+     "kind": "card",
+     "label": "Yeni nesil işlemciler tanıtıldı: neler değişiyor?",
+     "icon": "play_arrow",
+     "variant": "filled",
+     "supporting": "Teknoloji Kanalı · 3 sa önce · Video",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "o5",
+      "transition": "slide"
+     },
+     "note": "Video karosu: kaynak simgesi yerine oynat simgesi, zamanın yanında Video etiketi. Dokununca video okuyucusu açılır."
+    }
+   ]
+  },
+  {
+   "id": "g60",
+   "x": 2818,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "pb1",
+     "kind": "badge",
+     "label": "▶",
+     "icon": null,
+     "variant": "filled",
+     "note": "Küçük oynat rozeti (canvas yalnızca ▶ etiketli rozet çizebilir)."
+    }
+   ]
+  },
+  {
+   "id": "g61",
+   "x": 2476,
+   "y": 316,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hc2",
+     "kind": "card",
+     "label": "Elektrikli araç satışları üçüncü çeyrekte arttı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Donanım Haber · 5 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "o1",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g62",
+   "x": 2634,
+   "y": 324,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hd2",
+     "kind": "badge",
+     "label": "",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g63",
+   "x": 2670,
+   "y": 316,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hc3",
+     "kind": "card",
+     "label": "Android 17 beta sürümü yayınlandı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 4 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "o1",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g64",
+   "x": 2476,
+   "y": 444,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hc4",
+     "kind": "card",
+     "label": "Açık kaynak projeler için yeni destek programı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Chip Online · 4 sa önce",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "o1",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g65",
+   "x": 2670,
+   "y": 444,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hc5",
+     "kind": "card",
+     "label": "Uzay teleskobu uzak bir galaksiyi anlattı",
+     "icon": "play_arrow",
+     "variant": "filled",
+     "supporting": "BBC Türkçe · 5 sa önce · Video",
+     "noImage": true,
+     "size": 186,
+     "size2": 120,
+     "action": {
+      "to": "o5",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g66",
+   "x": 2818,
+   "y": 452,
+   "axis": "x",
+   "items": [
+    {
+     "id": "pb5",
+     "kind": "badge",
+     "label": "▶",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g67",
+   "x": 2800,
+   "y": 812,
+   "axis": "x",
+   "items": [
+    {
+     "id": "fab6",
+     "kind": "fab",
+     "label": "",
+     "icon": "add",
+     "variant": "filled",
+     "size": 56,
+     "note": "FAB #EFA4F7; menüyü açar."
+    }
+   ]
+  }
+ ]
+}

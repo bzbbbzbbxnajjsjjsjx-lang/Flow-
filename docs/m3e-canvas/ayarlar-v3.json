@@ -1,0 +1,584 @@
+{
+ "title": "Akış",
+ "brief": "Sade, koyu lacivert RSS okuyucu: Ayarlar ekranı v3, eşit karolar ve sıkı ızgara.",
+ "frame": "phone",
+ "platform": "android",
+ "paletteKey": "blue",
+ "theme": {
+  "dark": true,
+  "bothModes": true,
+  "contrast": "standard",
+  "shape": "rounded",
+  "font": "robotoFlex",
+  "emphasized": true,
+  "motion": "expressive"
+ },
+ "frames": [
+  {
+   "id": "a1",
+   "name": "Ayarlar v3 (üst)",
+   "x": 0,
+   "y": 0,
+   "bg": "surface",
+   "note": "Sakin akış, Filtreler, Akış ve Okuma bölümleri. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tüm karolar tek 16dp köşe, 8dp aralık, 16dp kenar; anahtar karoları 72, seçim karoları 104, bağlantı karoları 72dp. Anahtarlar açıkken başparmakta onay simgesi (check) gösterir."
+  },
+  {
+   "id": "a2",
+   "name": "Ayarlar v3 (kaydırılmış alt)",
+   "x": 492,
+   "y": 0,
+   "bg": "surface",
+   "note": "Aynı ekranın kaydırılmış altı: Görünüm, Okuma özeti, Görseller. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tüm karolar tek 16dp köşe, 8dp aralık, 16dp kenar; anahtar karoları 72, seçim karoları 104, bağlantı karoları 72dp. Anahtarlar açıkken başparmakta onay simgesi (check) gösterir."
+  }
+ ],
+ "groups": [
+  {
+   "id": "g2",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i1",
+     "kind": "topAppBar",
+     "label": "Ayarlar",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "note": "Geri: ana ekrana döner."
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "x": 16,
+   "y": 96,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i3",
+     "kind": "text",
+     "label": "Sakin akış",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "x": 16,
+   "y": 124,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i5",
+     "kind": "listItem",
+     "label": "Sakin mod",
+     "icon": "spa",
+     "variant": "filled",
+     "switch": true,
+     "checked": true,
+     "supporting": "Okunmamış noktalarını gizler ve akışı günlük sınırla bitirir",
+     "note": "Anahtar açıkken (başparmakta onay simgesi) okunmamış noktaları gizlenir ve akış günlük sınırla biter."
+    }
+   ]
+  },
+  {
+   "id": "g8",
+   "x": 16,
+   "y": 204,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i7",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 104,
+     "fill": "surfaceContainer",
+     "note": "Günlük okuma sınırı; bağlı grup, tek seçim. Sınıra varınca akış biter."
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "x": 28,
+   "y": 214,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i9",
+     "kind": "text",
+     "label": "Günlük sınır",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g15",
+   "x": 28,
+   "y": 244,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i11",
+     "kind": "button",
+     "label": "15",
+     "icon": null,
+     "variant": "outlined",
+     "size": 89
+    },
+    {
+     "id": "i12",
+     "kind": "button",
+     "label": "30",
+     "icon": null,
+     "variant": "tonal",
+     "size": 89
+    },
+    {
+     "id": "i13",
+     "kind": "button",
+     "label": "50",
+     "icon": null,
+     "variant": "outlined",
+     "size": 89
+    },
+    {
+     "id": "i14",
+     "kind": "button",
+     "label": "Sınırsız",
+     "icon": null,
+     "variant": "outlined",
+     "size": 89
+    }
+   ]
+  },
+  {
+   "id": "g17",
+   "x": 16,
+   "y": 316,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i16",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 104,
+     "fill": "surfaceContainer",
+     "note": "Seçilen sürede mola önerir; engellemez, yalnızca devam et ya da uygulamayı kapat."
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "x": 28,
+   "y": 326,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i18",
+     "kind": "text",
+     "label": "Mola hatırlatıcı",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g23",
+   "x": 28,
+   "y": 356,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i20",
+     "kind": "button",
+     "label": "Kapalı",
+     "icon": null,
+     "variant": "tonal",
+     "size": 118
+    },
+    {
+     "id": "i21",
+     "kind": "button",
+     "label": "15 dk",
+     "icon": null,
+     "variant": "outlined",
+     "size": 118
+    },
+    {
+     "id": "i22",
+     "kind": "button",
+     "label": "30 dk",
+     "icon": null,
+     "variant": "outlined",
+     "size": 120
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "x": 16,
+   "y": 432,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i24",
+     "kind": "text",
+     "label": "Filtreler",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "x": 16,
+   "y": 460,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i26",
+     "kind": "listItem",
+     "label": "Sessiz kelimeler (2)",
+     "icon": "block",
+     "variant": "filled",
+     "icon2": "chevron_right",
+     "note": "Gizlenen kelime sayısını gösterir; sessiz kelimeler ekranını açar."
+    }
+   ]
+  },
+  {
+   "id": "g29",
+   "x": 16,
+   "y": 544,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i28",
+     "kind": "text",
+     "label": "Akış",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g31",
+   "x": 16,
+   "y": 572,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i30",
+     "kind": "listItem",
+     "label": "7 günden eski okunmamışları otomatik okundu yap",
+     "icon": "done_all",
+     "variant": "filled",
+     "switch": true,
+     "checked": false,
+     "note": "Açıksa 7 günden eski okunmamış yazılar uygulama açılırken okundu olur."
+    }
+   ]
+  },
+  {
+   "id": "g33",
+   "x": 16,
+   "y": 656,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i32",
+     "kind": "text",
+     "label": "Okuma",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g35",
+   "x": 16,
+   "y": 684,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i34",
+     "kind": "listItem",
+     "label": "Hızlı okuma",
+     "icon": "bolt",
+     "variant": "filled",
+     "switch": true,
+     "checked": true,
+     "supporting": "Kelime başlarını kalın yapar",
+     "note": "Yazı boyutu grubu artık burada yok; okuyucudaki Aa sayfasında."
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i36",
+     "kind": "topAppBar",
+     "label": "Ayarlar",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "note": "Geri: ana ekrana döner."
+    }
+   ]
+  },
+  {
+   "id": "g39",
+   "x": 508,
+   "y": 96,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i38",
+     "kind": "text",
+     "label": "Görünüm",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g41",
+   "x": 508,
+   "y": 124,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i40",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 104,
+     "fill": "surfaceContainer",
+     "note": "Tek seçim; Açık okuyucuyu açık temada gösterir."
+    }
+   ]
+  },
+  {
+   "id": "g43",
+   "x": 520,
+   "y": 134,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i42",
+     "kind": "text",
+     "label": "Tema",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g47",
+   "x": 520,
+   "y": 164,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i44",
+     "kind": "button",
+     "label": "Koyu",
+     "icon": null,
+     "variant": "tonal",
+     "size": 118
+    },
+    {
+     "id": "i45",
+     "kind": "button",
+     "label": "Açık",
+     "icon": null,
+     "variant": "outlined",
+     "size": 118
+    },
+    {
+     "id": "i46",
+     "kind": "button",
+     "label": "Sistem",
+     "icon": null,
+     "variant": "outlined",
+     "size": 120
+    }
+   ]
+  },
+  {
+   "id": "g49",
+   "x": 508,
+   "y": 236,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i48",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 104,
+     "fill": "surfaceContainer",
+     "note": "Okuma yazı tipi, tek seçim."
+    }
+   ]
+  },
+  {
+   "id": "g51",
+   "x": 520,
+   "y": 246,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i50",
+     "kind": "text",
+     "label": "Yazı tipi",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g54",
+   "x": 520,
+   "y": 276,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i52",
+     "kind": "button",
+     "label": "Sade",
+     "icon": null,
+     "variant": "tonal",
+     "size": 178
+    },
+    {
+     "id": "i53",
+     "kind": "button",
+     "label": "Serif",
+     "icon": null,
+     "variant": "outlined",
+     "size": 178
+    }
+   ]
+  },
+  {
+   "id": "g56",
+   "x": 508,
+   "y": 352,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i55",
+     "kind": "text",
+     "label": "Okuma özeti",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g58",
+   "x": 508,
+   "y": 380,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i57",
+     "kind": "listItem",
+     "label": "Haftalık okuma özeti",
+     "icon": "insights",
+     "variant": "filled",
+     "icon2": "chevron_right",
+     "note": "Haftalık özet ekranını açar."
+    }
+   ]
+  },
+  {
+   "id": "g60",
+   "x": 508,
+   "y": 464,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i59",
+     "kind": "text",
+     "label": "Görseller",
+     "icon": null,
+     "variant": "filled",
+     "size": 16,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g62",
+   "x": 508,
+   "y": 492,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i61",
+     "kind": "listItem",
+     "label": "Görselleri yükle",
+     "icon": "image",
+     "variant": "filled",
+     "switch": true,
+     "checked": true,
+     "supporting": "Görseller kaynak sitelerden indirilir",
+     "note": "Kapalıyken hiç görsel isteği yapılmaz."
+    }
+   ]
+  },
+  {
+   "id": "g64",
+   "x": 508,
+   "y": 572,
+   "axis": "x",
+   "items": [
+    {
+     "id": "i63",
+     "kind": "listItem",
+     "label": "Önbelleği temizle (12 MB)",
+     "icon": "delete_sweep",
+     "variant": "filled",
+     "note": "Karo biçimli düğme: dokununca görsel önbelleğini siler, boyut 0 MB olur; geri alınamaz, onay gerekmez."
+    }
+   ]
+  }
+ ]
+}

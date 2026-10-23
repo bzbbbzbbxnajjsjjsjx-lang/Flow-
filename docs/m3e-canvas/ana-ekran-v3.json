@@ -1,0 +1,837 @@
+{
+ "title": "Akış",
+ "brief": "Sakin ve sonlu RSS okuyucu; ana ekran Material 3 Expressive yeniden tasarım (v3). Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, seçili #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Karo köşesi 16dp, boşluk 8dp. Kullanılan bileşenler (material3 1.5.0-beta01): LargeFlexibleTopAppBar, ButtonGroup/ToggleButton (connected), FilterChip, LinearWavyProgressIndicator, FloatingActionButtonMenu + ToggleFloatingActionButton.",
+ "frame": "phone",
+ "platform": "android",
+ "paletteKey": "blue",
+ "theme": {
+  "dark": true,
+  "bothModes": false,
+  "contrast": "standard",
+  "shape": "rounded",
+  "font": "robotoFlex",
+  "emphasized": true,
+  "motion": "expressive"
+ },
+ "frames": [
+  {
+   "id": "f1",
+   "name": "Ana ekran (açık bar)",
+   "x": 0,
+   "y": 0,
+   "note": "Üstte genişlemiş LargeFlexibleTopAppBar, wavy ilerleme, bağlantılı filtre, çipler, kahraman karo ve eşit karolar.",
+   "bg": "surface"
+  },
+  {
+   "id": "f2",
+   "name": "Kaydırılmış (bar daralmış)",
+   "x": 492,
+   "y": 0,
+   "note": "Bar daralmış; eşit karolar, uç kart ve 'Hepsi okundu' bloğu. Bar ile filtre kaydırmayla gider.",
+   "bg": "surface",
+   "length": 1400
+  },
+  {
+   "id": "f3",
+   "name": "FAB menü açık",
+   "x": 984,
+   "y": 0,
+   "note": "Menü açık: toggle FAB 'x', dört öğe, arka plan karartılı.",
+   "bg": "surface"
+  }
+ ],
+ "groups": [
+  {
+   "id": "g1",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "lb1",
+     "kind": "box",
+     "label": "",
+     "size": 412,
+     "size2": 168,
+     "fill": "surfaceContainer",
+     "note": "LargeFlexibleTopAppBar (exitUntilCollapsed scroll davranışı): büyük başlık + tek satırlık alt başlık, kaydırınca küçük başlığa daralır. Arka plan #060A2D.",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "x": 196,
+   "y": 8,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a1",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "search",
+     "variant": "text",
+     "note": "Ara: 48dp hedef."
+    }
+   ]
+  },
+  {
+   "id": "g3",
+   "x": 244,
+   "y": 8,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a2",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "refresh",
+     "variant": "text",
+     "note": "Yenile: yenilerken wavy ilerleme görünür."
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "x": 292,
+   "y": 8,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a3",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "rss_feed",
+     "variant": "text",
+     "note": "Kaynaklar ekranı."
+    }
+   ]
+  },
+  {
+   "id": "g5",
+   "x": 340,
+   "y": 8,
+   "axis": "x",
+   "items": [
+    {
+     "id": "a4",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "more_vert",
+     "variant": "text",
+     "note": "Taşma menüsü (DropdownMenu): Ayarlar, Sessiz kelimeler, Haftalık özet, Okuma listesini paylaş gibi nadir işler."
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "x": 16,
+   "y": 84,
+   "axis": "x",
+   "items": [
+    {
+     "id": "t1",
+     "kind": "text",
+     "label": "Akış",
+     "size": 44,
+     "bold": true,
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g7",
+   "x": 16,
+   "y": 136,
+   "axis": "x",
+   "items": [
+    {
+     "id": "s1",
+     "kind": "text",
+     "label": "30 yazı • yaklaşık 30 dk okuma",
+     "size": 14,
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g8",
+   "x": 16,
+   "y": 172,
+   "axis": "x",
+   "items": [
+    {
+     "id": "pr1",
+     "kind": "linearProgress",
+     "label": "",
+     "wavy": true,
+     "size": 380,
+     "note": "LinearWavyProgressIndicator; yalnızca yenilerken görünür, boşta 0 yükseklik.",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "gf0",
+   "x": 16,
+   "y": 200,
+   "axis": "x",
+   "items": [
+    {
+     "id": "fl00",
+     "kind": "button",
+     "label": "Okunmamış",
+     "icon": "check",
+     "variant": "tonal",
+     "size": 95,
+     "note": "Seçili öğe: tam yuvarlak (stadium) şekle, seçili değilken daha köşeli şekle morph eder; renk #2F3B9F, metin #DDE2FF. ButtonGroup + ToggleButton, bağlantılı (connected) kalır. Sıra: Okunmamış | Okunan | Sonra | Yıldızlı."
+    },
+    {
+     "id": "fl01",
+     "kind": "button",
+     "label": "Okunan",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "fl02",
+     "kind": "button",
+     "label": "Sonra",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "fl03",
+     "kind": "button",
+     "label": "Yıldızlı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    }
+   ]
+  },
+  {
+   "id": "g9",
+   "x": 16,
+   "y": 264,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c00",
+     "kind": "chip",
+     "label": "Kısa ≤3 dk",
+     "checked": false,
+     "variant": "outlined",
+     "note": "Kategori/kısa okuma çipleri yatay kayar; grup çipi satırı (varsa) bunun altında aynı biçimde gelir. FilterChip.",
+     "icon": null
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "x": 124,
+   "y": 264,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c01",
+     "kind": "chip",
+     "label": "Haber",
+     "checked": true,
+     "variant": "outlined",
+     "icon": null
+    }
+   ]
+  },
+  {
+   "id": "g11",
+   "x": 204,
+   "y": 264,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c02",
+     "kind": "chip",
+     "label": "Teknoloji",
+     "checked": false,
+     "variant": "outlined",
+     "icon": null
+    }
+   ]
+  },
+  {
+   "id": "g12",
+   "x": 312,
+   "y": 264,
+   "axis": "x",
+   "items": [
+    {
+     "id": "c03",
+     "kind": "chip",
+     "label": "Yapay zekâ",
+     "checked": false,
+     "variant": "outlined",
+     "icon": null
+    }
+   ]
+  },
+  {
+   "id": "g13",
+   "x": 16,
+   "y": 308,
+   "axis": "x",
+   "items": [
+    {
+     "id": "hero",
+     "kind": "card",
+     "label": "Yapay zekâ modelleri bu hafta yeni rekor kırdı",
+     "supporting": "Webtekno · 3 sa önce · +2 kaynak",
+     "icon": "rss_feed",
+     "size": 380,
+     "size2": 252,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "note": "Kahraman karo: listenin ilk, en yeni okunmamış yazısı. Tam genişlik, daha yüksek görsel, 16dp köşe, #0E153F. Kaynak rozeti+adı, başlık, göreli zaman ve '+N kaynak' (Similar). Sonraki karolar eşit boyutlu 2 sütun.",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g14",
+   "x": 370,
+   "y": 316,
+   "axis": "x",
+   "items": [
+    {
+     "id": "herod",
+     "kind": "badge",
+     "label": "",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g15",
+   "x": 16,
+   "y": 568,
+   "axis": "x",
+   "items": [
+    {
+     "id": "g1a",
+     "kind": "card",
+     "label": "Android 17 beta yayınlandı",
+     "supporting": "ShiftDelete · 4 sa önce",
+     "icon": "rss_feed",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g16",
+   "x": 176,
+   "y": 576,
+   "axis": "x",
+   "items": [
+    {
+     "id": "g1ad",
+     "kind": "badge",
+     "label": "",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g17",
+   "x": 210,
+   "y": 568,
+   "axis": "x",
+   "items": [
+    {
+     "id": "g1b",
+     "kind": "card",
+     "label": "Elektrikli araç satışları arttı",
+     "supporting": "Donanım Haber · 5 sa önce",
+     "icon": "rss_feed",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g18",
+   "x": 370,
+   "y": 576,
+   "axis": "x",
+   "items": [
+    {
+     "id": "g1bd",
+     "kind": "badge",
+     "label": "",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "x": 340,
+   "y": 820,
+   "axis": "x",
+   "items": [
+    {
+     "id": "fab0",
+     "kind": "fab",
+     "label": "",
+     "icon": "add",
+     "size": 56,
+     "note": "Pembe (#EFA4F7) geçişli FAB: FloatingActionButtonMenu içinde ToggleFloatingActionButton. Kapalıyken '+', açıkken 'x' simgesine döner.",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g20",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tb2",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": null,
+     "variant": "filled",
+     "note": "Daralmış hâl: başlık küçük (title large), alt başlık gizlenir. Kaydırma ile LargeFlexibleTopAppBar bu hâle geçer; renk tonu surfaceContainer'a döner."
+    }
+   ]
+  },
+  {
+   "id": "g21",
+   "x": 688,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b1",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "search",
+     "variant": "text"
+    }
+   ]
+  },
+  {
+   "id": "g22",
+   "x": 736,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b2",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "refresh",
+     "variant": "text"
+    }
+   ]
+  },
+  {
+   "id": "g23",
+   "x": 784,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b3",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "rss_feed",
+     "variant": "text"
+    }
+   ]
+  },
+  {
+   "id": "g24",
+   "x": 832,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "b4",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "more_vert",
+     "variant": "text"
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "x": 508,
+   "y": 96,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h2a",
+     "kind": "card",
+     "label": "Yeni nesil işlemciler tanıtıldı",
+     "supporting": "Donanım Haber · 6 sa önce",
+     "icon": "rss_feed",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g26",
+   "x": 668,
+   "y": 104,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h2ad",
+     "kind": "badge",
+     "label": "",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "x": 702,
+   "y": 96,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h2b",
+     "kind": "card",
+     "label": "Uzay turizminde yeni dönem",
+     "supporting": "Webtekno · 7 sa önce",
+     "icon": "rss_feed",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g28",
+   "x": 508,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h2c",
+     "kind": "card",
+     "label": "Windows güncellemesi geldi",
+     "supporting": "ShiftDelete · 8 sa önce",
+     "icon": "rss_feed",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g29",
+   "x": 702,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h2d",
+     "kind": "card",
+     "label": "Veri merkezleri enerji tüketiyor",
+     "supporting": "Chip Online · 9 sa önce +3 kaynak",
+     "icon": "rss_feed",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g30",
+   "x": 508,
+   "y": 520,
+   "axis": "x",
+   "items": [
+    {
+     "id": "end",
+     "kind": "button",
+     "label": "Daha fazla göster · 10 yazı",
+     "icon": "expand_more",
+     "variant": "tonal",
+     "size": 380,
+     "note": "Uç kart: günlük sınır dolunca çıkar. Expressive: büyük yuvarlak (full) ya da daha köşeli şekil, basınca morph. Sonsuz kaydırma yok."
+    }
+   ]
+  },
+  {
+   "id": "g31",
+   "x": 508,
+   "y": 596,
+   "axis": "x",
+   "items": [
+    {
+     "id": "allread",
+     "kind": "card",
+     "label": "Hepsi okundu",
+     "supporting": "Bugün 18 dk okudun • Sonra listende 4 yazı",
+     "icon": "check_circle",
+     "noImage": true,
+     "size": 380,
+     "size2": 176,
+     "fill": "primaryContainer",
+     "note": "'Hepsi okundu' bloğu (liste bitince grid yerine görünür): ekstra yuvarlak (28dp+) kapsül şekli, #2F3B9F. Bugünün okuma dakikaları gösterilir; tonal buton 'Sonra listesine bak'.",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g32",
+   "x": 832,
+   "y": 820,
+   "axis": "x",
+   "items": [
+    {
+     "id": "fab492",
+     "kind": "fab",
+     "label": "",
+     "icon": "add",
+     "size": 56,
+     "note": "Pembe (#EFA4F7) geçişli FAB: FloatingActionButtonMenu içinde ToggleFloatingActionButton. Kapalıyken '+', açıkken 'x' simgesine döner.",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g33",
+   "x": 984,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "lb3",
+     "kind": "box",
+     "label": "",
+     "size": 412,
+     "size2": 168,
+     "fill": "surfaceContainer",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g34",
+   "x": 1000,
+   "y": 84,
+   "axis": "x",
+   "items": [
+    {
+     "id": "t3",
+     "kind": "text",
+     "label": "Akış",
+     "size": 44,
+     "bold": true,
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g35",
+   "x": 1000,
+   "y": 136,
+   "axis": "x",
+   "items": [
+    {
+     "id": "s3",
+     "kind": "text",
+     "label": "30 yazı • yaklaşık 30 dk okuma",
+     "size": 14,
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "gf984",
+   "x": 1000,
+   "y": 200,
+   "axis": "x",
+   "items": [
+    {
+     "id": "fl9840",
+     "kind": "button",
+     "label": "Okunmamış",
+     "icon": "check",
+     "variant": "tonal",
+     "size": 95,
+     "note": "Seçili öğe: tam yuvarlak (stadium) şekle, seçili değilken daha köşeli şekle morph eder; renk #2F3B9F, metin #DDE2FF. ButtonGroup + ToggleButton, bağlantılı (connected) kalır. Sıra: Okunmamış | Okunan | Sonra | Yıldızlı."
+    },
+    {
+     "id": "fl9841",
+     "kind": "button",
+     "label": "Okunan",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "fl9842",
+     "kind": "button",
+     "label": "Sonra",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "fl9843",
+     "kind": "button",
+     "label": "Yıldızlı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    }
+   ]
+  },
+  {
+   "id": "g36",
+   "x": 1000,
+   "y": 264,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h3",
+     "kind": "card",
+     "label": "Yapay zekâ modelleri bu hafta yeni rekor kırdı",
+     "supporting": "Webtekno · 3 sa önce",
+     "icon": "rss_feed",
+     "size": 380,
+     "size2": 252,
+     "fill": "surfaceContainer",
+     "action": {
+      "to": "f1",
+      "transition": "slide"
+     },
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "x": 1000,
+   "y": 524,
+   "axis": "x",
+   "items": [
+    {
+     "id": "scrim",
+     "kind": "text",
+     "label": "Arka plan karartılır (scrim, #060A2D %80)",
+     "size": 12,
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g38",
+   "x": 1160,
+   "y": 516,
+   "axis": "x",
+   "items": [
+    {
+     "id": "menu",
+     "kind": "fabMenu",
+     "label": "",
+     "tabs": [
+      {
+       "icon": "add",
+       "label": "Kaynak ekle"
+      },
+      {
+       "icon": "done_all",
+       "label": "Tümünü okundu yap"
+      },
+      {
+       "icon": "upload_file",
+       "label": "OPML içe aktar"
+      },
+      {
+       "icon": "download",
+       "label": "OPML dışa aktar"
+      }
+     ],
+     "note": "FloatingActionButtonMenu + FloatingActionButtonMenuItem; pembe #EFA4F7 öğeler. Tümünü okundu yap geri alınabilir (snackbar).",
+     "icon": null,
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g39",
+   "x": 1324,
+   "y": 820,
+   "axis": "x",
+   "items": [
+    {
+     "id": "fab984",
+     "kind": "fab",
+     "label": "",
+     "icon": "close",
+     "size": 56,
+     "note": "Pembe (#EFA4F7) geçişli FAB: FloatingActionButtonMenu içinde ToggleFloatingActionButton. Kapalıyken '+', açıkken 'x' simgesine döner.",
+     "variant": "filled"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,944 @@
+{
+ "title": "Akış",
+ "brief": "Akış RSS okuyucusu için görsel desteği: görselli karolar, yükleniyor durumu, kapak görselli okuyucu ve görsel ayarları.",
+ "frame": "phone",
+ "platform": "android",
+ "paletteKey": "blue",
+ "theme": {
+  "dark": true,
+  "bothModes": false,
+  "contrast": "standard",
+  "shape": "rounded",
+  "font": "robotoFlex",
+  "emphasized": true,
+  "motion": "expressive"
+ },
+ "frames": [
+  {
+   "id": "f1",
+   "name": "Akış (görselli)",
+   "x": 0,
+   "y": 0,
+   "bg": "surface",
+   "note": "Görselli ana akış: 16:9 görselli eşit karolar, bir video girdisi, bir görselsiz harf karosu. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, vurgu konteyneri #2F3B9F, FAB #EFA4F7, metin #DDE2FF, ikincil #8A8FB5. Tek köşe 16dp, boşluk 8dp."
+  },
+  {
+   "id": "f2",
+   "name": "Görsel yükleniyor",
+   "x": 492,
+   "y": 0,
+   "bg": "surface",
+   "note": "Aynı ızgara; iki karoda görsel yerine dalgalı ilerleme yer tutucusu. Karo boyutu sabit kalır. Renkler f1 ile aynı."
+  },
+  {
+   "id": "f3",
+   "name": "Okuyucu (kapak görseli)",
+   "x": 984,
+   "y": 0,
+   "bg": "surface",
+   "note": "Başlığın üstünde tam genişlik 16:9 yuvarlak (16dp) görsel, altında kaynak ve tarih satırı, sonra düz metin. Metin #DDE2FF, ikincil #8A8FB5. WebView yok."
+  },
+  {
+   "id": "f4",
+   "name": "Ayarlar (alt sayfa)",
+   "x": 1476,
+   "y": 0,
+   "bg": "surface",
+   "note": "Ayarlar alt sayfası #0E153F, 16dp üst köşe: görsel yükleme anahtarı ve önbellek temizleme."
+  }
+ ],
+ "groups": [
+  {
+   "id": "g1",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "abar",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "settings",
+     "actions": {
+      "icon2": {
+       "to": "f4",
+       "transition": "slideUp"
+      }
+     },
+     "note": "Sağdaki dişli Ayarlar alt sayfasını açar."
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "x": 16,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "ab1",
+     "kind": "button",
+     "label": "Tümü",
+     "icon": null,
+     "variant": "tonal",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g3",
+   "x": 144,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "ab2",
+     "kind": "button",
+     "label": "Okunmamış",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "x": 272,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "ab3",
+     "kind": "button",
+     "label": "Yıldızlı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g5",
+   "x": 16,
+   "y": 188,
+   "axis": "x",
+   "items": [
+    {
+     "id": "at0",
+     "kind": "card",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     },
+     "note": "Eşit karo 186x216, 16dp köşe, #0E153F. Üstte 16:9 yuvarlak görsel, altında kaynak rozeti + adı, başlık en çok 2 satır, zaman. Dokununca okuyucu açılır."
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "x": 210,
+   "y": 188,
+   "axis": "x",
+   "items": [
+    {
+     "id": "at1",
+     "kind": "card",
+     "label": "Android 17 beta tanıtım videosu yayınlandı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 4 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g7",
+   "x": 16,
+   "y": 412,
+   "axis": "x",
+   "items": [
+    {
+     "id": "at2",
+     "kind": "card",
+     "label": "Elektrikli araç satışları üçüncü çeyrekte arttı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Donanım Haber · 5 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g8",
+   "x": 210,
+   "y": 412,
+   "axis": "x",
+   "items": [
+    {
+     "id": "at3",
+     "kind": "card",
+     "label": "Açık kaynak projeler için yeni destek programı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Chip Online · 4 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     },
+     "noImage": false
+    }
+   ]
+  },
+  {
+   "id": "g9",
+   "x": 16,
+   "y": 636,
+   "axis": "x",
+   "items": [
+    {
+     "id": "at4",
+     "kind": "card",
+     "label": "Uzay teleskobu uzak bir galaksiyi görüntüledi",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "BBC Türkçe · 5 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "x": 210,
+   "y": 636,
+   "axis": "x",
+   "items": [
+    {
+     "id": "at5",
+     "kind": "card",
+     "label": "Tarayıcılarda gizlilik ayarları nasıl yapılır?",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 4 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g11",
+   "x": 218,
+   "y": 196,
+   "axis": "x",
+   "items": [
+    {
+     "id": "avid",
+     "kind": "chip",
+     "label": "Video",
+     "icon": "play_arrow",
+     "variant": "tonal",
+     "note": "Video girdisi: görselin üstünde küçük oynat rozeti ve 'Video' etiketi. Karo boyutu değişmez."
+    }
+   ]
+  },
+  {
+   "id": "g12",
+   "x": 210,
+   "y": 412,
+   "axis": "x",
+   "items": [
+    {
+     "id": "ablk",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 186,
+     "size2": 104,
+     "fill": "primaryContainer",
+     "radiusTop": 16,
+     "note": "Görseli olmayan girdi: aynı karo boyutunda tonal harf bloğu (#2F3B9F), kaynak adının ilk harfi. Görsel isteği yapılmaz."
+    }
+   ]
+  },
+  {
+   "id": "g13",
+   "x": 288,
+   "y": 444,
+   "axis": "x",
+   "items": [
+    {
+     "id": "alet",
+     "kind": "text",
+     "label": "C",
+     "icon": null,
+     "variant": "filled",
+     "size": 40,
+     "bold": true,
+     "note": "Harf #DDE2FF."
+    }
+   ]
+  },
+  {
+   "id": "g14",
+   "x": 340,
+   "y": 812,
+   "axis": "x",
+   "items": [
+    {
+     "id": "afab",
+     "kind": "fab",
+     "label": "",
+     "icon": "add",
+     "variant": "filled",
+     "size": 56,
+     "note": "FAB #EFA4F7; menüyü açar (Kaynak ekle, OPML)."
+    }
+   ]
+  },
+  {
+   "id": "g15",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bbar",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "icon2": "settings",
+     "actions": {
+      "icon2": {
+       "to": "f4",
+       "transition": "slideUp"
+      }
+     },
+     "note": "Sağdaki dişli Ayarlar alt sayfasını açar."
+    }
+   ]
+  },
+  {
+   "id": "g16",
+   "x": 508,
+   "y": 88,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bprog",
+     "kind": "linearProgress",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "wavy": true,
+     "note": "Yenilerken dalgalı ilerleme."
+    }
+   ]
+  },
+  {
+   "id": "g17",
+   "x": 508,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bb1",
+     "kind": "button",
+     "label": "Tümü",
+     "icon": null,
+     "variant": "tonal",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g18",
+   "x": 636,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bb2",
+     "kind": "button",
+     "label": "Okunmamış",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "x": 764,
+   "y": 120,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bb3",
+     "kind": "button",
+     "label": "Yıldızlı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 124
+    }
+   ]
+  },
+  {
+   "id": "g20",
+   "x": 508,
+   "y": 188,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bt0",
+     "kind": "card",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     },
+     "note": "Eşit karo 186x216, 16dp köşe, #0E153F. Üstte 16:9 yuvarlak görsel, altında kaynak rozeti + adı, başlık en çok 2 satır, zaman. Dokununca okuyucu açılır."
+    }
+   ]
+  },
+  {
+   "id": "g21",
+   "x": 702,
+   "y": 188,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bt1",
+     "kind": "card",
+     "label": "Android 17 beta tanıtım videosu yayınlandı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 4 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g22",
+   "x": 508,
+   "y": 412,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bt2",
+     "kind": "card",
+     "label": "Elektrikli araç satışları üçüncü çeyrekte arttı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Donanım Haber · 5 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g23",
+   "x": 702,
+   "y": 412,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bt3",
+     "kind": "card",
+     "label": "Açık kaynak projeler için yeni destek programı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Chip Online · 4 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g24",
+   "x": 508,
+   "y": 636,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bt4",
+     "kind": "card",
+     "label": "Uzay teleskobu uzak bir galaksiyi görüntüledi",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "BBC Türkçe · 5 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "x": 702,
+   "y": 636,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bt5",
+     "kind": "card",
+     "label": "Tarayıcılarda gizlilik ayarları nasıl yapılır?",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 4 sa önce",
+     "size": 186,
+     "size2": 216,
+     "action": {
+      "to": "f3",
+      "transition": "slide"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g26",
+   "x": 508,
+   "y": 188,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bph0",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 186,
+     "size2": 104,
+     "fill": "surfaceContainerHigh",
+     "radiusTop": 16,
+     "note": "Görsel yüklenirken yer tutucu blok (16:9 alan korunur, karo kaymaz); içinde dalgalı ilerleme. Yalnızca dalgalı gösterge kullanılır."
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "x": 585,
+   "y": 224,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bpw0",
+     "kind": "circularProgress",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "wavy": true,
+     "size": 32
+    }
+   ]
+  },
+  {
+   "id": "g28",
+   "x": 702,
+   "y": 412,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bph3",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 186,
+     "size2": 104,
+     "fill": "surfaceContainerHigh",
+     "radiusTop": 16,
+     "note": "Görsel yüklenirken yer tutucu blok (16:9 alan korunur, karo kaymaz); içinde dalgalı ilerleme. Yalnızca dalgalı gösterge kullanılır."
+    }
+   ]
+  },
+  {
+   "id": "g29",
+   "x": 779,
+   "y": 448,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bpw3",
+     "kind": "circularProgress",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "wavy": true,
+     "size": 32
+    }
+   ]
+  },
+  {
+   "id": "g30",
+   "x": 832,
+   "y": 812,
+   "axis": "x",
+   "items": [
+    {
+     "id": "bfab",
+     "kind": "fab",
+     "label": "",
+     "icon": "add",
+     "variant": "filled",
+     "size": 56,
+     "note": "FAB #EFA4F7; menüyü açar (Kaynak ekle, OPML)."
+    }
+   ]
+  },
+  {
+   "id": "g31",
+   "x": 984,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rbar",
+     "kind": "topAppBar",
+     "label": "",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "icon2": "more_vert",
+     "actions": {
+      "icon": {
+       "to": "f1",
+       "transition": "slide"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "g32",
+   "x": 1000,
+   "y": 96,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rimg",
+     "kind": "box",
+     "label": "Kapak görseli 16:9",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "size2": 214,
+     "fill": "surfaceContainerHigh",
+     "radiusTop": 16,
+     "radiusBottom": 16,
+     "note": "Tam genişlik 16:9, 16dp köşe. Görsel kapalıyken veya yoksa bu blok hiç gösterilmez, başlık yukarı çıkar."
+    }
+   ]
+  },
+  {
+   "id": "g33",
+   "x": 1000,
+   "y": 326,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rt",
+     "kind": "text",
+     "label": "Yapay zeka modelleri bu hafta yeni rekor kırdı",
+     "icon": null,
+     "variant": "filled",
+     "size": 24,
+     "bold": true,
+     "note": "Başlık #DDE2FF."
+    }
+   ]
+  },
+  {
+   "id": "g34",
+   "x": 1000,
+   "y": 418,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rs",
+     "kind": "text",
+     "label": "Webtekno · 22 Ekim 2026, 09:40",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "note": "Altyazı satırı: kaynak ve tarih, #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g35",
+   "x": 1000,
+   "y": 458,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rb0",
+     "kind": "text",
+     "label": "Araştırmacılar bu hafta yayımlanan raporda, yeni nesil",
+     "icon": null,
+     "variant": "filled",
+     "size": 17,
+     "note": "Gövde düz metin, satır yüksekliği 34dp."
+    }
+   ]
+  },
+  {
+   "id": "g36",
+   "x": 1000,
+   "y": 492,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rb1",
+     "kind": "text",
+     "label": "modellerin birçok ölçütte önceki sürümleri geride",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "x": 1000,
+   "y": 526,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rb2",
+     "kind": "text",
+     "label": "bıraktığını duyurdu. Geliştiriciler, bu ilerlemenin",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g38",
+   "x": 1000,
+   "y": 560,
+   "axis": "x",
+   "items": [
+    {
+     "id": "rb3",
+     "kind": "text",
+     "label": "günlük kullanımda da fark edileceğini söylüyor.",
+     "icon": null,
+     "variant": "filled",
+     "size": 17
+    }
+   ]
+  },
+  {
+   "id": "g39",
+   "x": 1030,
+   "y": 796,
+   "axis": "x",
+   "items": [
+    {
+     "id": "tb",
+     "kind": "toolbar",
+     "label": "",
+     "icon": null,
+     "variant": "tonal",
+     "tabs": [
+      {
+       "icon": "star",
+       "label": "Yıldızla"
+      },
+      {
+       "icon": "share",
+       "label": "Paylaş"
+      },
+      {
+       "icon": "open_in_browser",
+       "label": "Tarayıcıda aç"
+      },
+      {
+       "icon": "mark_email_read",
+       "label": "Okundu/Okunmadı"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "g40",
+   "x": 1476,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sbar",
+     "kind": "topAppBar",
+     "label": "Akış",
+     "icon": "rss_feed",
+     "variant": "filled"
+    }
+   ]
+  },
+  {
+   "id": "g41",
+   "x": 1476,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sscrim",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 892,
+     "fill": "inverseSurface",
+     "note": "Karartma; dokununca sayfa kapanır.",
+     "action": {
+      "to": "f1",
+      "transition": "slideDown"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g42",
+   "x": 1476,
+   "y": 452,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sheet",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "size": 412,
+     "size2": 440,
+     "checked": true,
+     "radiusTop": 16,
+     "note": "Alt sayfa, #0E153F, 16dp üst köşe."
+    }
+   ]
+  },
+  {
+   "id": "g43",
+   "x": 1492,
+   "y": 468,
+   "axis": "x",
+   "items": [
+    {
+     "id": "st",
+     "kind": "text",
+     "label": "Ayarlar",
+     "icon": null,
+     "variant": "filled",
+     "size": 22,
+     "bold": true,
+     "note": "Başlık #DDE2FF."
+    }
+   ]
+  },
+  {
+   "id": "g44",
+   "x": 1492,
+   "y": 524,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sw",
+     "kind": "switch",
+     "label": "Görselleri yükle",
+     "icon": null,
+     "variant": "filled",
+     "size": 380,
+     "checked": true,
+     "note": "Açıkken karolar ve okuyucu görselleri kaynak sitelerden (yalnızca HTTPS) indirir. Kapalıyken hiçbir görsel isteği yapılmaz; karolar harf bloğu gösterir."
+    }
+   ]
+  },
+  {
+   "id": "g45",
+   "x": 1492,
+   "y": 580,
+   "axis": "x",
+   "items": [
+    {
+     "id": "sn",
+     "kind": "text",
+     "label": "Görseller kaynak sitelerden indirilir; kapalıyken hiçbir görsel isteği yapılmaz",
+     "icon": null,
+     "variant": "filled",
+     "size": 13,
+     "note": "Açıklama #8A8FB5."
+    }
+   ]
+  },
+  {
+   "id": "g46",
+   "x": 1492,
+   "y": 664,
+   "axis": "x",
+   "items": [
+    {
+     "id": "cl",
+     "kind": "listItem",
+     "label": "Önbelleği temizle (12 MB)",
+     "icon": "delete_sweep",
+     "variant": "filled",
+     "supporting": "İndirilen görselleri siler",
+     "note": "Dokununca önbellekteki görselleri siler ve boyutu 0 MB yapar; akıştaki görseller gerektiğinde yeniden indirilir (anahtar açıksa)."
+    }
+   ]
+  }
+ ]
+}
