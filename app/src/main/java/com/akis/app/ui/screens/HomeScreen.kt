@@ -193,19 +193,19 @@ fun HomeScreen(
     val hidden = source.size - shown.size
     val columns = Adaptive.columns(LocalConfiguration.current.screenWidthDp)
     // The newest story with a picture leads the list as one wide tile; the rest fill the equal grid.
-    val resume = remember(data.articles, filter, searchActive) {
-        if (filter == Filter.UNREAD && !searchActive) ReaderRules.resumeCandidate(data.articles, System.currentTimeMillis()) else null
+    val resume = remember(data.articles, filter, searching) {
+        if (filter == Filter.UNREAD && !searching) ReaderRules.resumeCandidate(data.articles, System.currentTimeMillis()) else null
     }
-    val hero = remember(shown, settings.loadImages, searchActive) {
-        if (searchActive || !settings.loadImages) null else shown.firstOrNull { it.imageUrl.isNotEmpty() }
+    val hero = remember(shown, settings.loadImages, searching) {
+        if (searching || !settings.loadImages) null else shown.firstOrNull { it.imageUrl.isNotEmpty() }
     }
     // Day headers only where the list is sorted by date; the read list is sorted by when it was opened.
     val dated = !searchActive && filter != Filter.READ
     val pinnedFeeds = remember(data.feeds, filter) {
         if (filter == Filter.UNREAD) data.feeds.filter { it.pinned }.map { it.id }.toSet() else emptySet()
     }
-    val entries = remember(shown, columns, hero, dated, pinnedFeeds, searchActive) {
-        if (searchActive) emptyList() else listEntries(shown.filter { it.id != hero?.id }, columns, dated, pinnedFeeds)
+    val entries = remember(shown, columns, hero, dated, pinnedFeeds, searching) {
+        if (searching) emptyList() else listEntries(shown.filter { it.id != hero?.id }, columns, dated, pinnedFeeds)
     }
     val minutes = remember(shown) { shown.sumOf { FeedRules.readingMinutes(it.text) } }
     val allRead = remember(homeBase) { homeBase.isNotEmpty() && homeBase.none { !it.read } }
