@@ -6,6 +6,9 @@ Sakin, sonlu ve gizliliğe saygılı Material 3 Expressive RSS okuyucusu. İzin 
 
 > **Önemli:** Bu dosya GitHub'da derlenir ve telefonundaki eski Akış'tan farklı bir anahtarla imzalıdır. Eski Akış'ın üzerine kurulamaz. Önce eski uygulamada **Ayarlar → Veri → Yedekle** ile yedek al, eskisini kaldır, bunu kur, sonra **Yedekten geri yükle**.
 
+### Yenilikler (1.18.2)
+- **Arama düzeltmesi:** Arama alanı durum çubuğunun altına girmez; arama açıkken ana ekranın kartları ve karoları arkada görünmez, yalnızca son aramalar ve sonuçlar listelenir.
+
 ### Yenilikler (1.18.1)
 - **Arama:** Hap şeklinde yeni arama alanı, son aramalar (en fazla 8), küçük resimli sonuç satırları ve eşleşen kısmın vurgusu.
 - **Yenileme:** Ana ekranda yenilerken yalnızca dönüşen şekil görünür, dalgalı çubuk yok.
