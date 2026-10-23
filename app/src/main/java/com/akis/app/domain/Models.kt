@@ -28,6 +28,7 @@ object Limits {
     const val SHORT_MINUTES = 3
     const val CATEGORY_CHIPS = 10
     const val MAX_TOPICS = 8
+    const val MAX_RECENT_SEARCHES = 8
     const val SUMMARY_SENTENCES = 3
     const val PREFETCH = 5
     const val HISTORY_WEEKS = 4
@@ -132,6 +133,8 @@ data class Settings(
     val autoRefresh: Boolean = true,
     /** Words whose stories get a chip of their own on the home screen. */
     val topics: List<String> = emptyList(),
+    /** The last searches, newest first, at most [Limits.MAX_RECENT_SEARCHES]. */
+    val recentSearches: List<String> = emptyList(),
     /** Shows the three most telling sentences of a long story above its text. */
     val summary: Boolean = true,
     /** After a refresh, fetches the full text of the read-later stories so they open without a network. */

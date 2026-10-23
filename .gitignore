@@ -3,8 +3,3 @@ build/
 .gradle/
 *.iml
 .idea/
-.kotlin/
-dist/
-*.apk
-*.jks
-*.keystore

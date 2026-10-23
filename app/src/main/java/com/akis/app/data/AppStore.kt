@@ -34,7 +34,7 @@ class AppStore(context: Context, scope: CoroutineScope) {
     init {
         scope.launch(Dispatchers.IO) {
             state.value = read()
-            for (next in writes) write(next)
+            for (next in writes) runCatching { write(next) }
         }
     }
 
@@ -51,7 +51,12 @@ class AppStore(context: Context, scope: CoroutineScope) {
 
     private fun read(): AppData {
         // Streamed, so the whole file is never held as bytes and as a string next to the objects.
-        return runCatching { file.openRead().use { json.decodeFromStream(AppData.serializer(), it) } }.getOrNull() ?: AppData()
+        if (!file.baseFile.exists()) return AppData()
+        return runCatching { file.openRead().use { json.decodeFromStream(AppData.serializer(), it) } }.getOrElse {
+            // Unreadable file: keep a copy so the next write cannot destroy the only evidence.
+            runCatching { file.baseFile.copyTo(File(file.baseFile.parentFile, "akis.corrupt.json"), overwrite = true) }
+            AppData()
+        }
     }
 
     private fun write(data: AppData) {

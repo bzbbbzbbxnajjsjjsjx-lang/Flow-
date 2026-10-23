@@ -189,6 +189,7 @@ object FeedRules {
         quiet = s.quiet.coerceIn(0, MAX_PALETTE),
         mutedWords = s.mutedWords.mapNotNull(ReaderRules::cleanWord).distinct().take(Limits.MAX_MUTED),
         topics = s.topics.mapNotNull(ReaderRules::cleanWord).distinct().take(Limits.MAX_TOPICS),
+        recentSearches = s.recentSearches.map { it.trim().take(Limits.MAX_GROUP) }.filter { it.length >= 2 }.take(Limits.MAX_RECENT_SEARCHES),
         dailyLimit = if (s.dailyLimit in dailyLimits) s.dailyLimit else Settings().dailyLimit,
         breakMinutes = if (s.breakMinutes in breakChoices) s.breakMinutes else Settings().breakMinutes,
     )
@@ -253,15 +254,18 @@ object FeedRules {
     fun newestFirst(articles: List<Article>): List<Article> =
         articles.sortedWith(compareByDescending<Article> { it.publishedMillis }.thenBy { it.id })
 
+    /** Stories the user marked (star, read-later, own note) are never dropped by the size caps. */
+    private fun keeps(a: Article) = a.starred || a.later || a.note.isNotEmpty()
+
     private fun cap(sorted: List<Article>): List<Article> {
         val perFeed = mutableMapOf<String, Int>()
         val withinFeed = sorted.filter { a ->
             val n = perFeed.merge(a.feedId, 1, Int::plus) ?: 1
-            a.starred || n <= Limits.MAX_STORED_PER_FEED
+            keeps(a) || n <= Limits.MAX_STORED_PER_FEED
         }
         if (withinFeed.size <= Limits.MAX_ARTICLES) return withinFeed
         var excess = withinFeed.size - Limits.MAX_ARTICLES
-        return withinFeed.asReversed().filter { a -> if (!a.starred && excess > 0) { excess--; false } else true }.asReversed()
+        return withinFeed.asReversed().filter { a -> if (!keeps(a) && excess > 0) { excess--; false } else true }.asReversed()
     }
 
     fun removeFeed(data: AppData, feedId: String): AppData =

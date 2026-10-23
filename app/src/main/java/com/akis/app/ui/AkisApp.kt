@@ -329,6 +329,8 @@ fun AkisApp(
                             onSettings = { route = ROUTE_SETTINGS },
                             onAdd = { addOpen = true },
                             onDiscover = { route = ROUTE_DISCOVER },
+                            onSearch = { q -> viewModel.changeSettings { it.copy(recentSearches = ReaderRules.pushRecent(it.recentSearches, q)) } },
+                            onClearRecent = { viewModel.changeSettings { it.copy(recentSearches = emptyList()) } },
                             actionsFor = { a ->
                                 ArticleActions(
                                     later = { viewModel.toggleLater(a.id) },

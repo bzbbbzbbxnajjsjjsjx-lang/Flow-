@@ -142,7 +142,7 @@ fun ReaderParagraph(
 }
 
 /** Puts a background behind every occurrence of [query] (tr-TR, case-insensitive). */
-private fun marked(text: AnnotatedString, query: String, color: Color): AnnotatedString {
+internal fun marked(text: AnnotatedString, query: String, color: Color): AnnotatedString {
     val q = query.trim().lowercase(FeedRules.TR)
     val plain = text.text.lowercase(FeedRules.TR)
     return if (q.length < 2 || plain.length != text.text.length) text else buildAnnotatedString {

@@ -1,5 +1,7 @@
 package com.akis.app.ui.screens
 
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.Button
 import androidx.compose.material.icons.filled.Explore
@@ -56,7 +58,6 @@ import androidx.compose.material3.FloatingActionButtonMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
@@ -115,6 +116,8 @@ fun HomeScreen(
     onDiscover: () -> Unit,
     onImport: (Uri) -> Unit,
     onExport: (Uri) -> Unit,
+    onSearch: (String) -> Unit,
+    onClearRecent: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val settings = data.settings
@@ -201,8 +204,8 @@ fun HomeScreen(
     val pinnedFeeds = remember(data.feeds, filter) {
         if (filter == Filter.UNREAD) data.feeds.filter { it.pinned }.map { it.id }.toSet() else emptySet()
     }
-    val entries = remember(shown, columns, hero, dated, pinnedFeeds) {
-        listEntries(shown.filter { it.id != hero?.id }, columns, dated, pinnedFeeds)
+    val entries = remember(shown, columns, hero, dated, pinnedFeeds, searchActive) {
+        if (searchActive) emptyList() else listEntries(shown.filter { it.id != hero?.id }, columns, dated, pinnedFeeds)
     }
     val minutes = remember(shown) { shown.sumOf { FeedRules.readingMinutes(it.text) } }
     val allRead = remember(homeBase) { homeBase.isNotEmpty() && homeBase.none { !it.read } }
@@ -220,7 +223,7 @@ fun HomeScreen(
         modifier = modifier.nestedScroll(barBehavior.nestedScrollConnection),
         topBar = {
             if (searching) {
-                SearchBar(query, onQuery = { query = it }, onClose = { searching = false; query = "" })
+                SearchField(query, onQuery = { query = it }, onSubmit = { onSearch(query) }, onClose = { searching = false; query = "" })
             } else LargeFlexibleTopAppBar(
                 title = { Text("Akış") },
                 subtitle = subtitle?.let { text -> { Text(text) } },
@@ -280,25 +283,29 @@ fun HomeScreen(
         },
         snackbarHost = { SnackbarHost(snackbar) },
     ) { padding ->
-        // Pulling down refreshes too, but shows nothing of its own: the wavy bar below is the only progress.
+        // Refreshing, by pull or by the button, shows one thing: the expressive morphing shape. No wavy bar.
+        val pullState = rememberPullToRefreshState()
         PullToRefreshBox(
             isRefreshing = refreshing,
             onRefresh = onRefresh,
             modifier = Modifier.padding(padding),
+            state = pullState,
             enabled = data.feeds.isNotEmpty() && !searching,
-            indicator = {},
+            indicator = {
+                PullToRefreshDefaults.LoadingIndicator(
+                    state = pullState,
+                    isRefreshing = refreshing,
+                    modifier = Modifier.align(Alignment.TopCenter),
+                )
+            },
         ) {
             Column {
-            // Reserved height, so the list does not jump when the refresh indicator appears.
-            Box(Modifier.fillMaxWidth().height(REFRESH_SLOT).padding(horizontal = 16.dp)) {
-                if (refreshing) LinearWavyProgressIndicator(Modifier.fillMaxWidth())
-            }
             LazyColumn(
                 state = listState,
                 contentPadding = PaddingValues(bottom = 96.dp),
                 verticalArrangement = Arrangement.spacedBy(TileSpacing),
             ) {
-                item { Box(inset) { FilterButtons(filter, onSelect = { filter = it; extra = 0 }) } }
+                if (!searching) item { Box(inset) { FilterButtons(filter, onSelect = { filter = it; extra = 0 }) } }
                 if (groups.isNotEmpty() && !searching) {
                     item {
                         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -338,7 +345,10 @@ fun HomeScreen(
                     data.feeds.isEmpty() -> item {
                         Box(inset) { EmptyFeeds(onImport = { importLauncher.launch(arrayOf("*/*")) }, onDiscover = onDiscover) }
                     }
-                    searchActive && results.isEmpty() -> item { Box(inset) { NoResults() } }
+                    searching && !searchActive -> item {
+                        Box(inset) { RecentSearches(settings.recentSearches, onPick = { query = it; onSearch(it) }, onClear = onClearRecent) }
+                    }
+                    searchActive && results.isEmpty() -> item { Box(inset) { NoResults(query) } }
                     quietBlocked -> item { Box(inset) { QuietCard(onShow = { quietOverride = true }) } }
                     entries.isEmpty() && hero == null -> item {
                         Text(
@@ -379,6 +389,15 @@ fun HomeScreen(
                             }
                             repeat(columns - entry.items.size) { Spacer(Modifier.weight(1f)) }
                         }
+                    }
+                }
+                if (searchActive) {
+                    items(results, key = { "found-${it.id}" }) { found ->
+                        SearchResultRow(
+                            found, feeds[found.feedId], now, settings.loadImages, query,
+                            onClick = { onSearch(query); onOpen(found.id) },
+                            modifier = inset,
+                        )
                     }
                 }
                 if (hidden > 0) item { Box(inset) { EndCard(hidden, onMore = { extra += Limits.MORE_STEP }) } }
@@ -461,35 +480,7 @@ private fun FilterButtons(selected: Filter, onSelect: (Filter) -> Unit, modifier
 private val HomeFilters = listOf(Filter.UNREAD, Filter.READ, Filter.LATER, Filter.STARRED)
 
 @Composable
-private fun SearchBar(query: String, onQuery: (String) -> Unit, onClose: () -> Unit, modifier: Modifier = Modifier) {
-    val focus = remember { FocusRequester() }
-    LaunchedEffect(Unit) { focus.requestFocus() }
-    TopAppBar(
-        modifier = modifier,
-        title = {
-            TextField(
-                value = query,
-                onValueChange = onQuery,
-                placeholder = { Text("Yazılarda ara") },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                keyboardActions = KeyboardActions(),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.Transparent,
-                    unfocusedContainerColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                ),
-                modifier = Modifier.fillMaxWidth().focusRequester(focus),
-            )
-        },
-        navigationIcon = { ActionIconButton(onClick = onClose) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Aramadan çık") } },
-        actions = { if (query.isNotEmpty()) ActionIconButton(onClick = { onQuery("") }) { Icon(Icons.Filled.Close, "Aramayı temizle") } },
-    )
-}
-
-@Composable
-private fun NoResults(modifier: Modifier = Modifier) {
+private fun NoResults(query: String, modifier: Modifier = Modifier) {
     Column(modifier.fillMaxWidth().padding(vertical = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Surface(Modifier.size(DONE_BLOCK), shape = TileShape, color = MaterialTheme.colorScheme.surfaceContainerLow) {
             Box(contentAlignment = Alignment.Center) { Icon(Icons.Filled.SearchOff, null, Modifier.size(48.dp)) }
@@ -499,6 +490,13 @@ private fun NoResults(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.titleLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 12.dp).semantics { heading() },
+        )
+        Text(
+            "\"${query.trim()}\" için başlıkta, özette veya metinde bir şey bulunamadı.",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 4.dp, start = 24.dp, end = 24.dp),
         )
     }
 }
@@ -601,7 +599,6 @@ private fun EmptyFeeds(onImport: () -> Unit, onDiscover: () -> Unit, modifier: M
 }
 
 private const val FAB_SWAP = 0.5f
-private val REFRESH_SLOT = 12.dp
 private val EMPTY_BLOCK = 160.dp
 private val EMPTY_EMOJI_SIZE = 72.sp
 private val DONE_BLOCK = 120.dp

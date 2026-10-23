@@ -1,5 +1,7 @@
 package com.akis.app.ui
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -18,6 +20,9 @@ import com.akis.app.ui.screens.FeedSheetContent
 import com.akis.app.ui.screens.HomeScreen
 import com.akis.app.ui.screens.ReaderScreen
 import com.akis.app.ui.screens.ReadingSheetContent
+import com.akis.app.ui.screens.RecentSearches
+import com.akis.app.ui.screens.SearchField
+import com.akis.app.ui.screens.SearchResultRow
 import com.akis.app.ui.screens.SettingsScreen
 import com.akis.app.ui.screens.SourcesScreen
 import com.akis.app.ui.screens.SummaryScreen
@@ -84,6 +89,7 @@ class ScreenshotTest {
     private fun Home(d: AppData) = HomeScreen(
         data = d, refreshing = false, snackbar = SnackbarHostState(), onRefresh = {}, onOpen = {}, onSources = {},
         onSettings = {}, onAdd = {}, onMarkAllRead = {}, actionsFor = noActions, onDiscover = {}, onImport = {}, onExport = {},
+        onSearch = {}, onClearRecent = {},
     )
 
     @Test fun home() = capture("home") { Home(data) }
@@ -95,6 +101,20 @@ class ScreenshotTest {
     @Test fun homeBlack() = capture("home_black", palette = 2) { Home(data.copy(settings = data.settings.copy(palette = 2))) }
 
     @Test fun homeEmpty() = capture("home_empty") { Home(AppData()) }
+
+    @Test fun searchEmpty() = capture("search_empty") {
+        androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(horizontal = 16.dp)) {
+            SearchField("", {}, {}, {})
+            RecentSearches(listOf("yapay zeka", "uzay", "bisiklet"), {}, {})
+        }
+    }
+
+    @Test fun searchResults() = capture("search_results") {
+        androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(horizontal = 16.dp)) {
+            SearchField(articles[0].title.take(5), {}, {}, {})
+            articles.take(4).forEach { SearchResultRow(it, feeds.first(), now, false, articles[0].title.take(5), {}) }
+        }
+    }
 
     @Test fun settings() = capture("settings") { Settings(0) }
 

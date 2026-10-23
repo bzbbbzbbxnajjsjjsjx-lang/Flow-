@@ -1,0 +1,633 @@
+{
+ "title": "Akış",
+ "brief": "Akış arama deneyimi (v1): AppBarWithSearch + ExpandedFullScreenSearchBar. Palet (canvas uygulayamaz): arka plan #060A2D, kartlar #0E153F, seçili #2F3B9F, metin #DDE2FF, ikincil #8A8FB5. Karo köşesi 16dp, boşluk 8dp. İlerleme şekli eklenmez.",
+ "frame": "phone",
+ "platform": "android",
+ "paletteKey": "blue",
+ "theme": {
+  "dark": true,
+  "bothModes": false,
+  "contrast": "standard",
+  "shape": "rounded",
+  "font": "robotoFlex",
+  "emphasized": true,
+  "motion": "expressive"
+ },
+ "frames": [
+  {
+   "id": "f1",
+   "name": "Ana ekran",
+   "x": 0,
+   "y": 0,
+   "bg": "surface",
+   "note": "Arama çubuğu hap biçiminde uygulama çubuğunda; yenile, kaynaklar ve ayarlar simgelerinin yanında."
+  },
+  {
+   "id": "f2",
+   "name": "Arama (boş)",
+   "x": 492,
+   "y": 0,
+   "bg": "surface",
+   "note": "Tam ekran arama, yazı yok: Son aramalar listesi ve ipucu."
+  },
+  {
+   "id": "f3",
+   "name": "Arama (sonuçlar)",
+   "x": 984,
+   "y": 0,
+   "bg": "surface",
+   "note": "Sorgu yazılı: 'N yazı bulundu' ve dikey sonuç satırları."
+  },
+  {
+   "id": "f4",
+   "name": "Arama (sonuç yok)",
+   "x": 1476,
+   "y": 0,
+   "bg": "surface",
+   "note": "Eşleşme yok: dostça satır ve Kaynaklarda ara ipucu."
+  }
+ ],
+ "groups": [
+  {
+   "id": "g1",
+   "x": 0,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_bg",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "fill": "surfaceContainer",
+     "size": 412,
+     "size2": 168,
+     "note": "LargeFlexibleTopAppBar, arka plan #060A2D; arama çubuğu başlığın üstündeki eylem satırında."
+    }
+   ]
+  },
+  {
+   "id": "g2",
+   "x": 16,
+   "y": 16,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_search",
+     "kind": "searchBar",
+     "label": "Yazılarda ara",
+     "icon": "search",
+     "variant": "filled",
+     "size": 208,
+     "action": {
+      "to": "f2",
+      "transition": "expand"
+     },
+     "note": "AppBarWithSearch: hap biçimli (stadium) çubuk, #0E153F, arama simgesi ve 'Yazılarda ara' yer tutucusu. Dokununca ExpandedFullScreenSearchBar tam ekran açılır (Notlar'daki gibi). Eski şeffaf metin alanı kalkar."
+    }
+   ]
+  },
+  {
+   "id": "g3",
+   "x": 232,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_ref",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "refresh",
+     "variant": "text",
+     "note": "Yenile: değişmez; yenilerken PullToRefresh şekli."
+    }
+   ]
+  },
+  {
+   "id": "g4",
+   "x": 280,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_src",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "rss_feed",
+     "variant": "text",
+     "note": "Kaynaklar."
+    }
+   ]
+  },
+  {
+   "id": "g5",
+   "x": 328,
+   "y": 20,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_set",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "settings",
+     "variant": "text",
+     "note": "Ayarlar (taşma menüsü yerine doğrudan simge; Sessiz kelimeler vb. Ayarlar içinde)."
+    }
+   ]
+  },
+  {
+   "id": "g6",
+   "x": 16,
+   "y": 84,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_t",
+     "kind": "text",
+     "label": "Akış",
+     "icon": null,
+     "variant": "filled",
+     "size": 44,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "id": "g7",
+   "x": 16,
+   "y": 136,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_s",
+     "kind": "text",
+     "label": "30 yazı • yaklaşık 30 dk okuma",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g8",
+   "x": 16,
+   "y": 184,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_f0",
+     "kind": "button",
+     "label": "Okunmamış",
+     "icon": "check",
+     "variant": "tonal",
+     "size": 95
+    },
+    {
+     "id": "h_f1",
+     "kind": "button",
+     "label": "Okunan",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "h_f2",
+     "kind": "button",
+     "label": "Sonra",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    },
+    {
+     "id": "h_f3",
+     "kind": "button",
+     "label": "Yıldızlı",
+     "icon": null,
+     "variant": "outlined",
+     "size": 95
+    }
+   ]
+  },
+  {
+   "id": "g9",
+   "x": 16,
+   "y": 248,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_hero",
+     "kind": "card",
+     "label": "Yapay zekâ modelleri bu hafta yeni rekor kırdı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce · +2 kaynak",
+     "size": 380,
+     "size2": 252,
+     "fill": "surfaceContainer"
+    }
+   ]
+  },
+  {
+   "id": "g10",
+   "x": 16,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_c1",
+     "kind": "card",
+     "label": "Android 17 beta yayınlandı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "ShiftDelete · 4 sa önce",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer"
+    }
+   ]
+  },
+  {
+   "id": "g11",
+   "x": 210,
+   "y": 508,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_c2",
+     "kind": "card",
+     "label": "Elektrikli araç satışları arttı",
+     "icon": "rss_feed",
+     "variant": "filled",
+     "supporting": "Donanım Haber · 5 sa önce",
+     "size": 186,
+     "size2": 200,
+     "fill": "surfaceContainer"
+    }
+   ]
+  },
+  {
+   "id": "g12",
+   "x": 340,
+   "y": 820,
+   "axis": "x",
+   "items": [
+    {
+     "id": "h_fab",
+     "kind": "fab",
+     "label": "",
+     "icon": "add",
+     "variant": "filled",
+     "size": 56,
+     "note": "Mevcut FAB menüsü; değişmez."
+    }
+   ]
+  },
+  {
+   "id": "g13",
+   "x": 492,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_barbg",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "fill": "surfaceContainer",
+     "size": 412,
+     "size2": 88
+    }
+   ]
+  },
+  {
+   "id": "g14",
+   "x": 508,
+   "y": 16,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_bar",
+     "kind": "searchBar",
+     "label": "Yazılarda ara",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "size": 380,
+     "note": "ExpandedFullScreenSearchBar girişi: geri oku (Aramayı kapat), 'Yazılarda ara' yer tutucusu. Temizle (x) düğmesi yalnızca metin varken görünür. Klavye otomatik açılır.",
+     "icon2": "close",
+     "action": {
+      "to": "f3",
+      "transition": "fade"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g15",
+   "x": 508,
+   "y": 104,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_h",
+     "kind": "text",
+     "label": "Son aramalar",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "bold": true,
+     "note": "labelLarge, başlık olarak işaretli (heading). Liste Settings'te saklanır, en çok 8 kayıt."
+    }
+   ]
+  },
+  {
+   "id": "e_list",
+   "x": 492,
+   "y": 136,
+   "axis": "y",
+   "items": [
+    {
+     "id": "e_r0",
+     "kind": "listItem",
+     "label": "yapay zekâ",
+     "icon": "history",
+     "variant": "filled",
+     "icon2": "close",
+     "action": {
+      "to": "f3",
+      "transition": "fade"
+     },
+     "note": "Satıra dokununca kayıt alana yazılır ve sonuçlar açılır. Sağdaki x o aramayı siler (contentDescription: \"…\" aramasını sil)."
+    },
+    {
+     "id": "e_r1",
+     "kind": "listItem",
+     "label": "elektrikli araç",
+     "icon": "history",
+     "variant": "filled",
+     "icon2": "close",
+     "action": {
+      "to": "f3",
+      "transition": "fade"
+     }
+    },
+    {
+     "id": "e_r2",
+     "kind": "listItem",
+     "label": "android 17",
+     "icon": "history",
+     "variant": "filled",
+     "icon2": "close",
+     "action": {
+      "to": "f3",
+      "transition": "fade"
+     }
+    },
+    {
+     "id": "e_r3",
+     "kind": "listItem",
+     "label": "uzay turizmi",
+     "icon": "history",
+     "variant": "filled",
+     "icon2": "close",
+     "action": {
+      "to": "f3",
+      "transition": "fade"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g16",
+   "x": 508,
+   "y": 440,
+   "axis": "x",
+   "items": [
+    {
+     "id": "e_hint",
+     "kind": "card",
+     "label": "İpucu",
+     "icon": "info",
+     "variant": "filled",
+     "supporting": "Başlık, özet ve kaynak adında aranır. Okunmuş yazılar da dahildir; sessize alınan kelimeler sonuçta görünmez.",
+     "size": 380,
+     "size2": 112,
+     "noImage": true,
+     "fill": "surfaceContainer",
+     "note": "Sakin ipucu kartı, 16dp köşe, #0E153F. Geçmiş boşsa 'Aradıkların burada görünür.' yerine bu kart tek başına kalır."
+    }
+   ]
+  },
+  {
+   "id": "g17",
+   "x": 984,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "r_barbg",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "fill": "surfaceContainer",
+     "size": 412,
+     "size2": 88
+    }
+   ]
+  },
+  {
+   "id": "g18",
+   "x": 1000,
+   "y": 16,
+   "axis": "x",
+   "items": [
+    {
+     "id": "r_bar",
+     "kind": "searchBar",
+     "label": "yapay zekâ",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "size": 380,
+     "note": "Metin yazıldıkça sonuçlar canlı süzülür. x metni siler ve boş duruma döner. Klavyedeki ara tuşu aramayı geçmişe ekler.",
+     "icon2": "close",
+     "action": {
+      "to": "f4",
+      "transition": "fade"
+     }
+    }
+   ]
+  },
+  {
+   "id": "g19",
+   "x": 1000,
+   "y": 104,
+   "axis": "x",
+   "items": [
+    {
+     "id": "r_cnt",
+     "kind": "text",
+     "label": "3 yazı bulundu",
+     "icon": null,
+     "variant": "filled",
+     "size": 14,
+     "bold": true,
+     "note": "Sonuç sayısı satırı (labelLarge, ikincil renk #8A8FB5, heading). Sayı değişince duyurulur (liveRegion)."
+    }
+   ]
+  },
+  {
+   "id": "g20",
+   "x": 1000,
+   "y": 144,
+   "axis": "x",
+   "items": [
+    {
+     "id": "r_row0",
+     "kind": "listItem",
+     "label": "Yapay zekâ modelleri bu hafta yeni rekor kırdı",
+     "icon": "image",
+     "variant": "filled",
+     "supporting": "Webtekno · 3 sa önce",
+     "note": "Satır: solda 56dp'lik önizleme resmi (12dp köşe; resim yoksa kaynak rozeti), kaynak adı, en çok iki satır başlık ve göreli zaman. Eşleşen kelimeler ('yapay zekâ') primary rengiyle ve kalın vurgulanır (AnnotatedString, Turkish locale). Satıra dokununca okuyucu açılır, arama geçmişe eklenir. Satır aralığı 8dp, köşe 16dp, #0E153F."
+    }
+   ]
+  },
+  {
+   "id": "g21",
+   "x": 1000,
+   "y": 224,
+   "axis": "x",
+   "items": [
+    {
+     "id": "r_row1",
+     "kind": "listItem",
+     "label": "Yapay zekâ ile çalışan çeviri uygulaması yenilendi",
+     "icon": "image",
+     "variant": "filled",
+     "supporting": "ShiftDelete · dün"
+    }
+   ]
+  },
+  {
+   "id": "g22",
+   "x": 1000,
+   "y": 304,
+   "axis": "x",
+   "items": [
+    {
+     "id": "r_row2",
+     "kind": "listItem",
+     "label": "Yapay zekâ düzenlemesi Meclis gündeminde",
+     "icon": "image",
+     "variant": "filled",
+     "supporting": "Donanım Haber · 3 gün önce"
+    }
+   ]
+  },
+  {
+   "id": "g23",
+   "x": 1476,
+   "y": 0,
+   "axis": "x",
+   "items": [
+    {
+     "id": "n_barbg",
+     "kind": "box",
+     "label": "",
+     "icon": null,
+     "variant": "filled",
+     "fill": "surfaceContainer",
+     "size": 412,
+     "size2": 88
+    }
+   ]
+  },
+  {
+   "id": "g24",
+   "x": 1492,
+   "y": 16,
+   "axis": "x",
+   "items": [
+    {
+     "id": "n_bar",
+     "kind": "searchBar",
+     "label": "kuantum",
+     "icon": "arrow_back",
+     "variant": "filled",
+     "size": 380,
+     "note": "Eşleşme yok: çubuk ve x aynı kalır.",
+     "icon2": "close"
+    }
+   ]
+  },
+  {
+   "id": "g25",
+   "x": 1658,
+   "y": 160,
+   "axis": "x",
+   "items": [
+    {
+     "id": "n_ic",
+     "kind": "iconButton",
+     "label": "",
+     "icon": "search_off",
+     "variant": "tonal",
+     "note": "Süs simgesi (contentDescription yok, dekoratif). Yeni bir ilerleme şekli yok."
+    }
+   ]
+  },
+  {
+   "id": "g26",
+   "x": 1492,
+   "y": 232,
+   "axis": "x",
+   "items": [
+    {
+     "id": "n_t",
+     "kind": "text",
+     "label": "\"kuantum\" ile eşleşen yazı yok",
+     "icon": null,
+     "variant": "filled",
+     "size": 20,
+     "bold": true,
+     "note": "Dostça tek satır."
+    }
+   ]
+  },
+  {
+   "id": "g27",
+   "x": 1492,
+   "y": 268,
+   "axis": "x",
+   "items": [
+    {
+     "id": "n_s",
+     "kind": "text",
+     "label": "Yazımı kontrol et ya da daha kısa bir kelime dene.",
+     "icon": null,
+     "variant": "filled",
+     "size": 14
+    }
+   ]
+  },
+  {
+   "id": "g28",
+   "x": 1492,
+   "y": 312,
+   "axis": "x",
+   "items": [
+    {
+     "id": "n_btn",
+     "kind": "button",
+     "label": "Kaynaklarda ara",
+     "icon": "rss_feed",
+     "variant": "tonal",
+     "size": 380,
+     "note": "İpucu düğmesi: Kaynaklar ekranını aynı sorguyla açar, kaynak adı ve adresinde arar."
+    }
+   ]
+  }
+ ]
+}

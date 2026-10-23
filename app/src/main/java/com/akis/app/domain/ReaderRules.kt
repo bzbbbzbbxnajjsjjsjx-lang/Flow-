@@ -50,6 +50,13 @@ object ReaderRules {
         return if (q.isEmpty()) articles else articles.filter { a -> listOf(a.title, a.text, a.fullText).any { it.lowercase(TR).contains(q) } }
     }
 
+    /** Puts [query] first in the search history (tr-TR, no duplicates), at most [Limits.MAX_RECENT_SEARCHES]; short ones are ignored. */
+    fun pushRecent(recent: List<String>, query: String): List<String> {
+        val q = query.trim().replace(whitespace, " ").take(Limits.MAX_GROUP)
+        if (q.length < 2) return recent
+        return (listOf(q) + recent.filterNot { it.lowercase(TR) == q.lowercase(TR) }).take(Limits.MAX_RECENT_SEARCHES)
+    }
+
     fun groups(feeds: List<Feed>): List<String> =
         feeds.map { it.group }.filter { it.isNotEmpty() }.distinct().sortedWith(String.CASE_INSENSITIVE_ORDER)
 
@@ -124,7 +131,7 @@ object ReaderRules {
     /** Deletes read stories that nobody asked to keep once they are old; returns the same data when nothing changes. */
     fun cleanup(data: AppData, now: Long): AppData {
         val cutoff = now - Limits.CLEANUP_DAYS * DAY_MS
-        val expired = { a: Article -> a.read && !a.starred && !a.later && a.publishedMillis in 1 until cutoff }
+        val expired = { a: Article -> a.read && !a.starred && !a.later && a.note.isEmpty() && a.publishedMillis in 1 until cutoff }
         return if (!data.settings.cleanup || data.articles.none(expired)) data else data.copy(articles = data.articles.filterNot(expired))
     }
 
