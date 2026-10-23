@@ -4,6 +4,12 @@ name: Emulator
 # baseline profile), a screenshot, frame stats and crash log. Run it by hand from the Actions tab.
 on:
   workflow_dispatch:
+  # The repository's default branch is not main, so a hand start is not offered; a push to these files runs it.
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/emulator.yml
+      - scripts/emulator-check.sh
 
 permissions:
   contents: read
