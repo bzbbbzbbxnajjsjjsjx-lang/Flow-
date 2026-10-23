@@ -1,0 +1,5 @@
+# Hand-written baseline profile: the app's own code is compiled ahead of time at install,
+# so the first screen does not start in the interpreter. Library classes ship their own profiles.
+HSPLcom/akis/app/**;->**(**)**
+HSPLcom/akis/app/**;-><init>(**)V
+Lcom/akis/app/**;
