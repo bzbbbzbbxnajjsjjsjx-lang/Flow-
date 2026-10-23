@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.platform.LocalConfiguration
 import com.akis.app.domain.Adaptive
 import com.akis.app.domain.Article
 import com.akis.app.domain.Feed
@@ -40,7 +39,7 @@ fun SourceArticlesScreen(
     modifier: Modifier = Modifier,
 ) {
     val now = remember(articles) { System.currentTimeMillis() }
-    val columns = Adaptive.columns(LocalConfiguration.current.screenWidthDp)
+    val columns = Adaptive.columns(windowWidthDp())
     val rows = remember(articles, feed.id, columns) { FeedRules.newestFirst(articles.filter { it.feedId == feed.id }).chunked(columns) }
     Scaffold(
         modifier = modifier,

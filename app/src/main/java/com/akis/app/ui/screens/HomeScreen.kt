@@ -83,7 +83,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -191,7 +190,7 @@ fun HomeScreen(
         if (limited) source.take(settings.dailyLimit + extra) else source
     }
     val hidden = source.size - shown.size
-    val columns = Adaptive.columns(LocalConfiguration.current.screenWidthDp)
+    val columns = Adaptive.columns(windowWidthDp())
     // The newest story with a picture leads the list as one wide tile; the rest fill the equal grid.
     val resume = remember(data.articles, filter, searching) {
         if (filter == Filter.UNREAD && !searching) ReaderRules.resumeCandidate(data.articles, System.currentTimeMillis()) else null

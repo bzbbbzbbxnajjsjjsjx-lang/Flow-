@@ -34,6 +34,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
@@ -45,6 +47,13 @@ import com.akis.app.domain.Feed
 import com.akis.app.domain.FeedRules
 
 private val Thumb = 64.dp
+
+/** The width of the window in dp, so tile columns follow split screen and large screens. */
+@Composable
+fun windowWidthDp(): Int {
+    val width = LocalWindowInfo.current.containerSize.width
+    return with(LocalDensity.current) { width.toDp().value.toInt() }
+}
 
 /** The search field: a back button and one rounded pill that holds the query. */
 @Composable
